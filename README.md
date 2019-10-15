@@ -9,5 +9,7 @@
 * MÓDULO 2: **Mathematica** y **Octave**
 * MÓDULO 3: **Maxima**
 
-[Acceso a la documentación par el módulo 1](https://nbviewer.jupyter.org/github/rrgalvan/softmat/blob/master/documents/Intro.ipynb)
+<hr>
+
+[Acceso a la documentación para el módulo 1](https://nbviewer.jupyter.org/github/rrgalvan/softmat/blob/master/documents/Intro.ipynb)
 
