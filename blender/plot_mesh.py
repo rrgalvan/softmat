@@ -10,22 +10,23 @@ verts = []
 faces = []
 
 # mesh variables
-numX = 5
-numY = 30
+numX = 20
+numY = 50
 
 # wave variables
-freq = 0.5
+pi = 3.14159
+freq = 3 * (2*pi)/numY
 amp = 1
-a, b= -2, 2
+a, b= -1, 1
 scale = (b-a)/numX
-zscale = 0.1*scale
+zscale = 0.1
 
 #fill verts array
 for i in range (0, numX):
     for j in range(0,numY):
 
-        x = a + i*math.cos(scale * j)
-        y = a + i*math.sin(scale * j)
+        x = scale*i*math.cos(freq * j)
+        y = scale*i*math.sin(freq * j)
         #z = scale*((amp*math.cos(i*freq))+(amp*math.sin(j*freq)))
         z = j*zscale
 
