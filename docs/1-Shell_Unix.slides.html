@@ -13498,7 +13498,7 @@ a.anchor-link {
 </li>
 <li><p>Para ejecutar una <strong><em>shell</em> de tipo Unix dentro de Windows</strong>, se puede usar <a href="https://www.cygwin.com/">Cygwin</a>.</p>
 </li>
-<li><p>A partir de Windows 10 es posible, incluso, ejecutar un escritorio de tipo GNU/Linux (en concreto, de la distribución <a href="https://www.ubuntu.com/">Ubuntu</a>).</p>
+<li><p>A partir de Windows 10 es posible, incluso, ejecutar un entorno de tipo GNU/Linux empotrado (<a href="https://docs.microsoft.com/es-es/windows/wsl/install-win10">más información aquí</a>).</p>
 </li>
 <li>Si se desea probar un sistema GNU/Linux para examinarlo y estudiar más seriamente la <em>shell</em> unix, es recomendable el instalarlo dentro de una <strong>máquina virtual</strong> (para ello, por ejemplo, se puede usar <a href="https://www.virtualbox.org/">VirtualBox</a>). </li>
 <li>Por supuesto, la <strong>opción óptima</strong> es instalar una distribución GNU/Linux "físicamente" en el ordenador (por ejemplo, se puede recomendar la instalación de <a href="https://www.ubuntu.com/">Ubuntu</a>). Al arrancar el sistema se podrá elegir entre ambos sistemas operativos.</li>
@@ -13516,7 +13516,7 @@ a.anchor-link {
 <p>Si tu ordenador tiene tan solo el sistema Windows, necesitarás instalar una shell (o un sistema operativo GNU/Linux completo), por lo que tienes que elegir una de las posibilidades siguientes:</p>
 <ul>
 <li>Instalar Cygwin</li>
-<li>Habilitar el escritorio de Ubuntu GNU/Linux dentro de Windows</li>
+<li>Habilitar el subsistema de Windows para Linux dentro, de Windows 10</li>
 <li>Instalar GNU/Linux dentro de una máquina virtual</li>
 <li>Instalar GNU/Linux de forma nativa (habilitar doble arranque windows/linux)</li>
 </ul>
@@ -13540,10 +13540,12 @@ a.anchor-link {
 <li><p>Cuando se abre una terminal, ésta muestra un indicador, que es conocido como <strong>prompt</strong>, para indicar que está esperando una entrada.</p>
 </li>
 <li><p>En estas notas se usará generalmete un signo <strong>\$</strong> para indicar un prompt de Unix, aunque tu sistema puede tener un prompt algo diferente.</p>
+<ul>
+<li><p>Por ejemplo, es usual que aparecezcan el <em>nombre del usuario</em> y el del <em>ordenador</em> precediendo al signo <strong>\$</strong></p>
 </li>
-<li><p>Por ejemplo, antecediendo a un signo <em>\$</em>, es usual que aparecezcan el nombre del usuario y el nombre del ordenador.</p>
+<li><p>El promt también suele mostrar el nombre de la llamada <em>carpeta actual</em> o <em>directorio de trabajo</em>. Más sobre este directorio...</p>
 </li>
-<li><p>Confrecuenca, el prompt muestra también el nombre de un directorio (o carpeta) llamada <em>carpeta actual</em> o <em>directorio de trabajo</em></p>
+</ul>
 </li>
 </ul>
 
@@ -13554,11 +13556,10 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Directorio-de-trabajo">Directorio de trabajo<a class="anchor-link" href="#Directorio-de-trabajo">&#182;</a></h1><ul>
-<li><p>El <strong>directorio de trabajo</strong> es aquél que utiliza ls <em>shell</em> como referencia 
-para las rutas relativas de los archivos. Es decir, es el directorio donde 
-"<em>se encuentra situada</em>" la <em>shell</em>.</p>
+<li><p>El <strong>directorio de trabajo</strong> es aquél que utiliza la <em>shell</em> como 
+para las rutas relativas de los archivos. Es decir, es el directorio donde "<em>se encuentra situada</em>" la <em>shell</em>.</p>
 </li>
-<li><p>La primera vez que se abre la terminal, el directorio de trabajo se situará en una <strong>carpeta de inicio</strong>  (o carpeta <em>home</em>) que es específica a cada usuario.</p>
+<li><p>La primera vez que se abre la terminal, el directorio de trabajo se situará en una <strong>carpeta de inicio</strong>  (o carpeta <em>home</em>), que es específica a cada usuario.</p>
 </li>
 </ul>
 
@@ -13713,7 +13714,7 @@ archivo:</li>
 <li><p>Esta orden ejecuta el comando <em>man</em> (páginas del manual) con el
 argumento <em>ls</em>, y provoca que Unix muestre la información del manual disponible sobre <em>ls</em>.</p>
 </li>
-<li><p>Si haces esto, probablemente se abrirá una página de información en la que aparece el carácter *<code>:</code> en la parte inferior.</p>
+<li><p>Si haces esto, probablemente se abrirá una página de información en la que aparece el carácter <code>:</code> en la parte inferior.</p>
 </li>
 <li><p>El <em>promt</em> <code>:</code> indica que se está un <strong>entorno diferente</strong>, diseñado para <strong>desplazarse o buscar a través de un gran archivo de texto</strong>.</p>
 </li>
@@ -13755,7 +13756,7 @@ argumento <em>ls</em>, y provoca que Unix muestre la información del manual dis
 </li>
 <li><p>Si te interesa usar la terminal en el futuro, es muy recomendable buscar información sobre ellos y aprender a usarlos.</p>
 </li>
-<li><p><strong>Tarea optativa</strong>: elegir uno de estos editores para utilizarlos en la terminal, pedir ayuda, buscar informacióin en internet</p>
+<li><p><strong>Tarea optativa</strong>: elegir uno de estos editores para utilizarlos en la terminal, pedir ayuda, buscar información en internet</p>
 </li>
 <li><p>Además de éstos, existe un editor muy sencillo (y mucho menos potente) llamado <em>nano</em>. Para editar un fichero basta escribir:</p>
 <div class="highlight"><pre><span></span>$ nano mifichero
@@ -13998,8 +13999,7 @@ relámpago</code></pre>
 <pre><code>$ ./fortrancode.exe &amp;</code></pre>
 <ul>
 <li>Ahora podrás volver al prompt de Unix y continuar trabajando.</li>
-<li>Los caracteres <code>./' antes del comando indica que el programa ejecutable está en el directorio actual (</code>.`)
-*</li>
+<li>Los caracteres <code>./</code> antes del comando indican que el programa ejecutable está en el directorio actual (<code>.</code>)</li>
 </ul>
 
 </div>
@@ -14114,6 +14114,20 @@ echo "Encantado de conocerte, $nombre"</code></pre>
 <li>Ejecutarlo
 <pre><code>./myscript.sh</code></pre>
 </li>
+</ol>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Ejercicio">Ejercicio<a class="anchor-link" href="#Ejercicio">&#182;</a></h1><p>Crear un <em>script</em> que realice de forma automática los siguientes pasos:</p>
+<ol>
+<li>Descargar de <a href="https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos">https://cnecovid.isciii.es/covid19/#documentaci%C3%B3n-y-datos</a> los datos de coronavirus por las CCAA a nivel provincial (<a href="https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv">https://cnecovid.isciii.es/covid19/resources/datos_provincias.csv</a>)</li>
+<li>Mostrar en pantalla el número de líneas que contiene el fichero y el número de líneas en las que aparece la provincia de Cádiz (CA) </li>
+<li>Mostrar en pantalla los datos de coronavirus para la provincia de Cádiz en los 10 últimos días</li>
+<li>Grabar estos últimos datos en un fichero llamado CovidCadiz10.csv</li>
 </ol>
 
 </div>
