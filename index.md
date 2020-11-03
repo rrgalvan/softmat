@@ -1,3 +1,7 @@
+# Presentación del curso 'Software en Matemáticas'
+
+http://https://rrgalvan.github.io/softmat/Inicio.slides.html
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/rrgalvan/softmat/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
