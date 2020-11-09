@@ -14387,13 +14387,18 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="El-Editor-Atom">El Editor Atom<a class="anchor-link" href="#El-Editor-Atom">&#182;</a></h1><p>El entorno Jupyter, de orientado a la creación de cuadernos interactivos (que inclyen código, texto, gráficas etc) tiene muchas ventajas.</p>
 <p>Pero su gran flexibilidad es a veces un inconveniente. En muchas ocasiones, es conveniente utilizar (como sustituto o como complemento a Jupyter) código python "puro"</p>
-<p>Para ello, será fundamental utilizar un editor que se integre perfectmente con Python. Así podremos contar con ventajas como</p>
+<p>Para ello, será fundamental utilizar un editor que se integre perfectamente con Python. Así podremos contar con ventajas como</p>
 <ul>
 <li>Integración con el intérprete de Python</li>
 <li>Autocomletado de código y atajos de teclado</li>
 <li>Autodetección de errores de programación</li>
 <li>...</li>
 </ul>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Aquí nos centraremos en cómo configurar el <a href="https://atom.io/">editor Atom</a> para su uso con Python. Sus características principales:</p>
 <ul>
 <li>Atom es un editor muy completo y con licencia <a href="https://flight-manual.atom.io/faq/sections/is-atom-open-source/">libre de (tipo MIT)</a>. </li>
@@ -14401,13 +14406,30 @@ div.jp-OutputPrompt {
 <li>Es muy flexible y pueden añadirse funcionalidades extra (Paquetes) de forma fácil</li>
 </ul>
 <p>Su instalación es muy sencilla, desde su página web <a href="https://atom.io/">https://atom.io/</a>. Veremos cómo configurarlo para usarlo con Python de forma ágil</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Configuraci&#243;n-de-Atom-para-Python">Configuraci&#243;n de Atom para Python<a class="anchor-link" href="#Configuraci&#243;n-de-Atom-para-Python">&#182;</a></h2><p>Aunque una vez instlado Atom ya podemos utilizarlo para editar código Python, es fácil realizar una configuración adicional que nos permitirá una programacón mucho más ágil.</p>
 <p>Para ello, instalaremos algunos paquetes específicos, utilizando el menú <code>Preferences</code> (al que se accede a través de <code>Edit</code> o <code>Atom</code>, según el sistema operativo que utilicemos).</p>
-<ul>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Men&#250;-Preferences">Men&#250; <code>Preferences</code><a class="anchor-link" href="#Men&#250;-Preferences">&#182;</a></h4><ul>
 <li>Se nos abrirá una pestaña a la derecha llamada <code>Editor Settings</code>, en la que podemos personalizar algunas opciones. Porejemplo, puede ser interesante activar <code>Scroll Past End</code> (desplazarse más allá de la última línea de código) y <code>Show Indent Guide</code> (mostrar líneas verticales que nos indican las tabulaciones presentes)</li>
-<li>Tendremos a la izquierda el menú <code>Install</code>, que nos permite buscar paquetes para, automáticamente, descargarlos de internet e instalarlos. Algunos paquetes recomendables:<ul>
-<li><code>atom-python-run</code>: ejecutar en una consola ficheros python abiertos en Atom (pulsando las teclas <code>F5</code>o <code>F6</code>, por defecto). <ul>
-<li><strong>Configuración</strong>: Después de instalarlo, el paquete debe configurarse para que utilize <strong>python3</strong>. Para ello pulsar en <code>Settings</code> y, en las entradas <code>F5 command</code> y <code>F6 command</code>, sustituir <em>python</em> por <em>python3</em>.</li>
+<li>Tendremos a la izquierda el menú <code>Install</code>, que nos permite buscar paquetes para, automáticamente, descargarlos de internet e instalarlos. </li>
+</ul>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Algunos-paquetes-recomendables:">Algunos paquetes recomendables:<a class="anchor-link" href="#Algunos-paquetes-recomendables:">&#182;</a></h4><ul>
+<li><code>atom-python-run</code>: ejecutar en una consola ficheros python (pulsando las teclas <code>F5</code>o <code>F6</code>, por defecto). <ul>
+<li><strong>Configuración</strong>: Tras instalar, el paquete debe configurarse para que utilize <strong>python3</strong>. Pulsar en <code>Settings</code> y, en las entradas <code>F5 command</code> y <code>F6 command</code>, sustituir <em>python</em> por <em>python3</em>.</li>
 </ul>
 </li>
 <li><code>autocomplete-python</code>: mientras tecleamos, una ventana nos muestra distintas sugerencias para autocompletar el código (tecla <code>Tabulador</code>)</li>
@@ -14416,8 +14438,6 @@ div.jp-OutputPrompt {
 </ul>
 </li>
 <li><code>python-autopep8</code>: formatea el código Python acorde con la guía de estilo oficial de Python (<a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>).</li>
-</ul>
-</li>
 </ul>
 
 </div>
