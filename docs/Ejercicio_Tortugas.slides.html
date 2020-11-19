@@ -13324,34 +13324,72 @@ En este ejercicio, especializaremos esta clase,
 creando una clase llamada <code>TortugaConOlfato</code> que se derive de 
 <em>TortugaConMemoria</em>.</p>
 <p>La clase <em>TortugaConOlfato</em> tendrá un constructor que reciba como primer parámetro una función llamada <em>olor</em>. El resto serán los parámetros usuales: posición y orientación. La función olor toma como parámetro las coordenadas <em>(x,y)</em> de un punto del plano y devuelve un número real que identifica la cantidad de olor en de punto.</p>
-<p>Para fijar ideas, supondremos que la función olor viene dada la distancia Euclídea a un punto $(A_x, A_y)$ donde está situado el alimento. Valores bajos de esta función significarán que el alimento está cerca. La tortuga está interesada en minimizar esta función, pero sus conocimientos matemáticos son escasos, de modo que utiliza el siguiente algoritmo sencillo:
-Repetir $n$ veces:
-1.- Avanzar una distancia, $d$
-2.- Si no huele mejor, girar a la derecha un ángulo $a$</p>
-<p>Para ello, toda <em>TortugaConOlfato</em> tendrá un método <code>huele_mejor()</code>. Dada una <em>TortugaConOlfato</em>, t, entonces <em>t.huele_mejor()</em> devolverá un valor booleano verdadero (True) si el olor en el la posición actual de t es menor que el olor en la posición anterior (de la ruta seguida por la tortuga). En otro caso, <em>huele_mejor()</em> devolverá falso. Si la tortuga todavía no se ha movido (y por tanto su ruta contiene solamente a la posición inicial), <em>huele_mejor()</em> también devolverá el valor falso.</p>
-<p>En este ejercicio se pide:</p>
+<p>Para fijar ideas, supondremos que la función olor viene dada la distancia Euclídea a un punto $(A_x, A_y)$ donde está situado el alimento. Valores bajos de esta función significarán que el alimento está cerca.</p>
+<blockquote><p>olor(x,y) = $\sqrt{(x-A_x)^2 + (y-A_y)^2}$</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La tortuga está interesada en minimizar la función de olor, pero sus conocimientos matemáticos son escasos, de modo que utiliza el siguiente algoritmo sencillo:</p>
+<blockquote><p>Repetir $n$ veces:</p>
 <ol>
-<li>Implementar en Python la clase <em>TortugaConOlfato</em> descrita anteriormente, derivada de una clase ya existente TortugaConMemoria (vista en clase)</li>
-<li><p>Implementar en un cuaderno Jupyter el algoritmo sencillo descrito anteriormente y mostrar las gráficas resultantes para los siguientes parámetros, siendo siempre $(A_x, A_y)=(10,10)$:</p>
+<li>Avanzar una distancia, $d$</li>
+<li>Si no huele mejor, girar a la derecha un ángulo $a$</li>
+</ol>
+</blockquote>
+<p>Para ello, toda <em>TortugaConOlfato</em> tendrá un método <code>huele_mejor()</code>. Dada una <em>TortugaConOlfato</em>, t, entonces <code>t.huele_mejor()</code> devolverá un valor booleano verdadero (True) si el olor en el la posición actual de t es menor que el olor en la posición anterior (de la ruta seguida por la tortuga). En otro caso, <em>huele_mejor()</em> devolverá falso. Si la tortuga todavía no se ha movido (y por tanto su ruta contiene solamente a la posición inicial), <em>huele_mejor()</em> también devolverá el valor falso.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En este ejercicio se pide:
+1) Implementar en Python la clase <em>TortugaConOlfato</em> descrita anteriormente, derivada de una clase ya existente TortugaConMemoria (vista en clase)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2) Implementar en un cuaderno Jupyter el algoritmo sencillo descrito anteriormente y mostrar las gráficas resultantes para los siguientes parámetros, siendo siempre $(A_x, A_y)=(10,10)$:</p>
 <ul>
 <li>a) n=100, d=1, a=60 grados...</li>
 <li>b) Parece que la tortuga no alcanza el alimento, probemos yendo más despacio (y dando más pasos): n=300, d=0.1, a=60 grados</li>
-<li><p>c) Mejor, ¿verdad? ¿Y qué tal con: n=20000, d=0.02, a=10 grados?</p>
-</li>
-<li><p><strong>Observación</strong>: las gráficas quedarán mejor si ajustas la figura para que los ejes x e y usen la misma razón de escala ("aspect ratio"). Busca información sobre "set_aspect" en Matplotlib.</p>
-</li>
+<li>c) Mejor, ¿verdad? ¿Y qué tal con: n=20000, d=0.02, a=10 grados?</li>
 </ul>
-</li>
-<li><p>Implementar en el mismo cuaderno Jupyter el siguiente experimento: consideramos dos tortugas llamadas presa y predador. La primera avanza hacia la madriguera intentando minimizar la función de olor utilizada anteriormente. El predador intenta minimizar su función de ofato, que definiremos como "distancia euclídea a la posición actual de la presa". Utilizando el algoritmo sencillo, en cada itereación</p>
-</li>
-</ol>
+<p><strong>Observación</strong>: las gráficas quedarán mejor si ajustas la figura para que los ejes x e y usen la misma razón de escala ("aspect ratio"). Busca información sobre "set_aspect" en Matplotlib.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>3) Implementar en el mismo cuaderno Jupyter el siguiente experimento: consideramos dos tortugas llamadas presa y predador. La primera avanza hacia la madriguera intentando minimizar la función de olor utilizada anteriormente. El predador intenta minimizar su función de ofato, que definiremos como "distancia euclídea a la posición actual de la presa". Utilizando un algoritmo sencillo, en cada iteración</p>
 <ul>
-<li>La presa avenza una distancia "d1" y giran un ángulo "a1"</li>
+<li>La presa avanza una distancia "d1" y giran un ángulo "a1"</li>
 <li>Seguidamente, el predador avanza "d2" y gira "a2".</li>
 </ul>
-<p>a) Dibuja la gráfica con las rutas de predador y presa para n=1200, d1=d2=0.05, a1=a2=30 grados. ¿Crees que el predador alcanzará a la presa?
-b) Dibuja la gráfica para d1=0.5 y d2=3*d1. Curioso el resultado ¿verdad?</p>
-<p>3) Prueba alguna variante que te parezca interesante! (¿desviaciones aleatorias en distancia o ángulo? ¿aumento o disminución de la distancia recorrida? ¿Más tortugas? ¿Otros sentidos?...)</p>
+<p>Se pide:</p>
+<ul>
+<li>a) Dibujar la gráfica con las rutas de predador y presa para n=1200, d1=d2=0.05, a1=a2=30 grados. ¿Crees que el predador alcanzará a la presa?</li>
+<li>b) Dibuja la gráfica para d1=0.5 y d2=3*d1. Curioso el resultado ¿verdad?</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>4) Opcionalmente: prueba alguna variante que te parezca interesante! (¿desviaciones aleatorias en distancia o ángulo? ¿aumento o disminución de la distancia recorrida? ¿Más tortugas? ¿Otros sentidos?...)</p>
 
 </div>
 </div>
