@@ -13325,9 +13325,7 @@ creando una clase llamada <code>TortugaConOlfato</code> que se derive de
 <em>TortugaConMemoria</em>.</p>
 <p>La clase <em>TortugaConOlfato</em> tendrá un constructor que reciba como primer parámetro una función llamada <em>olor</em>. El resto serán los parámetros usuales: posición y orientación. La función olor toma como parámetro las coordenadas <em>(x,y)</em> de un punto del plano y devuelve un número real que identifica la cantidad de olor en de punto.</p>
 <p>Para fijar ideas, supondremos que la función olor viene dada la distancia Euclídea a un punto $(A_x, A_y)$ donde está situado el alimento. Valores bajos de esta función significarán que el alimento está cerca.</p>
-<blockquote><p>olor(x,y) = $\sqrt{(x-A_x)^2 + (y-A_y)^2}$</p>
-</blockquote>
-
+$$ \m{olor}(x,y) = \sqrt{(x-A_x)^2 + (y-A_y)^2}$$
 </div>
 </div>
 </div></section></section><section><section>
@@ -13349,8 +13347,8 @@ creando una clase llamada <code>TortugaConOlfato</code> que se derive de
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En este ejercicio se pide:
-1) Implementar en Python la clase <em>TortugaConOlfato</em> descrita anteriormente, derivada de una clase ya existente TortugaConMemoria (vista en clase)</p>
+<p>En este ejercicio se pide:</p>
+<p>1) Implementar en Python la clase <em>TortugaConOlfato</em> descrita anteriormente, derivada de una clase ya existente TortugaConMemoria (vista en clase)</p>
 
 </div>
 </div>
@@ -13372,11 +13370,9 @@ creando una clase llamada <code>TortugaConOlfato</code> que se derive de
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ol>
-<li>Implementar en el mismo cuaderno Jupyter el siguiente experimento: consideramos dos tortugas llamadas presa y predador. La primera avanza hacia la madriguera intentando minimizar la función de olor utilizada anteriormente. El predador intenta minimizar su función de ofato, que definiremos como "distancia euclídea a la posición actual de la presa". Utilizando un algoritmo sencillo, en cada iteración</li>
-</ol>
+<p>3) Consideramos dos tortugas, <code>presa</code> y <code>predador</code>. La primera avanza hacia la madriguera intentando minimizar la función de olor utilizada anteriormente. El predador intenta minimizar su función de ofato, que definiremos como "distancia euclídea a la posición actual de la presa". Utilizaremos un algoritmo sencillo: en cada iteración, n:</p>
 <ul>
-<li>La presa avanza una distancia "d1" y giran un ángulo "a1"</li>
+<li>La presa avanza una distancia "d1" y gira un ángulo "a1".</li>
 <li>Seguidamente, el predador avanza "d2" y gira "a2".</li>
 </ul>
 <p>Se pide:</p>
