@@ -14437,7 +14437,10 @@ $$ {olor}(x,y) = \sqrt{(x-A_x)^2 + (y-A_y)^2}$$
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>3) Consideramos dos tortugas, <code>presa</code> y <code>predador</code>. La primera avanza hacia la madriguera intentando minimizar la función de olor utilizada anteriormente. El predador intenta minimizar su función de ofato, que definiremos como "distancia euclídea a la posición actual de la presa". Utilizaremos un algoritmo sencillo: en cada iteración, n:</p>
+<p>3) Consideramos dos tortugas, <code>presa</code> y <code>predador</code>. La primera avanza hacia la madriguera intentando minimizar la función de olor utilizada anteriormente. El predador intenta minimizar su propia función <em>olor</em>, que definiremos como:</p>
+<blockquote><p>"<em>olor(x,y)</em>=distancia euclídea a la posición actual de la presa".</p>
+</blockquote>
+<p>Utilizaremos un algoritmo sencillo: en cada iteración, n:</p>
 <ul>
 <li>La presa avanza una distancia $d_1$ y  (si no huele mejor) gira un ángulo $a_1$.</li>
 <li>Seguidamente, el predador avanza $d_2$ y (si no huele mejor) gira $a_2$.</li>
