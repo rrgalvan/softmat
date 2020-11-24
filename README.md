@@ -2,7 +2,7 @@
 
 # Software en Matemáticas
 
-*Máster Universitario en Matemáticas, Cádiz, 2019/2020*
+*Máster Universitario en Matemáticas, Cádiz, 2020/2021*
 
 ## Estructura del curso:
 * [MÓDULO 1: **Python**](https://nbviewer.jupyter.org/github/rrgalvan/softmat/blob/master/documents/Inicio.ipynb)
