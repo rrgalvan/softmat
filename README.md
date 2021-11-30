@@ -5,7 +5,7 @@
 *Máster Universitario en Matemáticas, Cádiz*
 
 ## Estructura del curso:
-* [MÓDULO 1: **Python**](https://nbviewer.jupyter.org/github/rrgalvan/softmat/blob/master/documents/Inicio.ipynb)
+* MÓDULO 1: **Python**
 * MÓDULO 2: **Mathematica** y **Octave**
 * MÓDULO 3: **Maxima**
 
