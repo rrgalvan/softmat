@@ -21,7 +21,6 @@ Uso:
 \end{itemize}
 
 Ejemplo:
-
 \begin{Octave}
   >> 1:5 
   ans =
@@ -53,7 +52,7 @@ Ejemplo:
 \item Los operadores \verb|.*| y \verb|./| multiplican y dividen
   elemento a elemento.
 
-\item {} En la consola, ejecutar el script y pedir los valores
+\item {} En la ventana de comandos, ejecutar el script y pedir los valores
   de \emph{x} e \emph{y}
 
 \begin{Octave}[morekeywords={tablavalores,x,y}]
@@ -63,7 +62,14 @@ Ejemplo:
   >> y
     (...valores de y...)
 \end{Octave}
+
+
+\item Otras funciones disponibles disponibles en la ventana de comandos:
+  \texttt{ls}, \texttt{pwd}, \texttt{cd}
 \end{itemize}
+
+
+
 
 
 \end{frame}
@@ -82,18 +88,20 @@ Ejemplo:
 \begin{itemize}
 \item 
   \emph{Por omisión}, Octave (al igual que Matlab) emplea un único
-  tipo numérico.
-
-\begin{center}\Large
-  (arrays n-dimensionales de)
-  \\
+  tipo numérico: 
+\begin{center}
+  \Large
   \textbf{\alert{reales de doble precisión}}
+  \\[0.5em]
+  \normalsize
+  (arrays n-dimensionales de)
+  \\[0.4em]~
 \end{center}
 
 
 \item Cualquier otro tipo tendrá que asignarse explícitamente:
 \begin{flushright}
-  \small \verb|int8|, \verb|int16|, \verb|int32|, \verb|int64|
+  \verb|int8|, \verb|int16|, \verb|int32|, \verb|int64|
   \\
   \small \verb|uint8|, \verb|uint16|, \verb|uint32|, \verb|uint64|
   \\
@@ -145,13 +153,16 @@ $$
 \pdfbookmark[0]{Subíndices}{sub-ndices}
 \begin{frame}[containsverbatim]\frametitle{Subíndices}
 
-Los arrays son indexables del modo usual
+  Los arrays son indexables del modo usual (uso de paréntesis, \texttt{1} es el primer índice)
 \begin{Octave}
   >> M(1,2) 
   ans = 12
   >> M(end,end) 
   ans = 23
 \end{Octave}
+
+\small
+\vfill\hfill ...por supuesto, \texttt{end} es el \emph{ultimo} índice.
 \end{frame}
 
 % ___________________________________________________________________________
@@ -183,7 +194,7 @@ Lo anterior devolvería un error en cualquier otro lenguaje de programación.
 % ___________________________________________________________________________
 
 \begin{frame}[containsverbatim]
-\frametitle{Por lo menos hay Boundary Checking}
+\frametitle{Al menos, hay verificación de límites}
 \begin{Octave}
   >> a=rand(3,3) 
   a = 
@@ -248,11 +259,14 @@ $$
 \begin{frame}[containsverbatim]
 \frametitle{Submatrices}
 
-Los subíndices se seleccionan mediante secuencias.  Si
+Los subíndices se seleccionan mediante secuencias.  Por ejemplo, para
+extraer la submatriz formada por las filas
 \begin{itemize}
 \item \emph{i} de 3 a 5
 \item \emph{j} de 3 a 5
 \end{itemize}
+escribimos:
+\vspace{-0.6em}
 \begin{Octave}
 >> S = M(3:5,3:5) 
  33   34   35 
@@ -260,9 +274,10 @@ Los subíndices se seleccionan mediante secuencias.  Si
  53   54   55
 \end{Octave}
 
-
-Si deseamos tos los elementos de una fila o columna, podemos abreviar
-usando '\verb|:|'. Por ejemplo:
+\medskip
+Para extraer elementos de una fila o columna, podemos usar
+'\verb|:|'. Por ejemplo:
+\vspace{-0.5em}
 \begin{Octave}
 >> S = M(3:5,:) 
  31   32   33   34   35 
@@ -287,7 +302,7 @@ Pascal.
 \item 
 Extraer la matriz $T$ formada por:
 \begin{itemize}
-\item Las filas $1$ a $3$ y...
+\item Las filas $1$ a $3$
 \item Las columnas $2$ y $5$
 \end{itemize}
 \end{itemize}
@@ -341,21 +356,21 @@ columnas $1$, $3$ y $5$ es...
 \pdfbookmark[0]{Operadores}{operadores}
 \begin{frame}[containsverbatim]
 \frametitle{Operadores}
-\begin{description}
+\begin{description}[itemsep=1.1em]
 \item [Operadores matriciales:]
-\verb|+ , - , * , / , ^|
+\verb|+    -    *    /    ^|
 
 \item [Operadores escalares:]
-\verb|.* , ./ , .^|
+\verb|.*    ./    .^|
 
 \item [Operadores lógicos:]
-\verb# &, | , ! #
+\verb# &   |    ! #
 
 \item [Operadores de comparación:]
-\verb|< , > , == , >= , <= , !=|
+\verb|<    >    ==    >=    <=    !=|
 
 \item [Operadores matriciales o de conjuntos:]
-\verb# && , ||#
+\verb# &&   ||#
 
 \end{description}
 

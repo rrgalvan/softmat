@@ -8,10 +8,10 @@
 \begin{frame}\frametitle{Qué es Octave}
 \begin{itemize}
 \item {} 
-Lenguaje interpretado de alto nivel, orientado al cálculo matricial
+  \textbf{Lenguaje} interpretado de alto nivel, orientado al \textbf{cálculo matricial}
 
 \item {} 
-Intérprete para este lenguaje
+  \textbf{Intérprete} para este lenguaje
 
 \item {} 
 Licencia libre (GPL)
@@ -39,16 +39,16 @@ Disponible para numerosos sistemas y arquitecturas
 \end{itemize}
 
 
-\item Octave \emph{no} está especializado en \emph{cálculo simbólico}
+\item Octave \emph{\bf no} está especializado en \emph{\bf cálculo simbólico}
     \begin{itemize}
     \item {} Para ello, existen numerosas herramientas libres como
-      \textbf{Maxima}, Axiom, Pari/GP o \emph{Ginac}
+       \textbf{Python}+\textbf{SymPy}, \textbf{Maxima}... 
     \end{itemize}
     
 \item 
     Existen muchos otros entornos de cálculo numérico libres:
     \begin{itemize}
-    \item {} Scilab, Euler, Freemat, Python/Scipy...    
+      \item {} \textbf{Python}+\textbf{NumPy}/\textbf{Scipy}, \textbf{Julia}, Scilab, Euler, Freemat...    
     \end{itemize}
     
 \end{itemize}
@@ -91,7 +91,7 @@ Cálculo numérico de derivadas e integrales
 Resolución numérica de ecuaciones diferenciales
 
 \item {} 
-Representación de gráficas 2D y 3D (a través de Gnuplot)
+Representación de gráficas 2D y 3D 
 
 \item {} 
 ...
@@ -135,14 +135,7 @@ Representación de gráficas 2D y 3D (a través de Gnuplot)
   \item Filosofía propia: ``\emph{lenguaje de scripting científico}''
     \begin{itemize}
     \item Se complementa con otras herramientas libres
-      \begin{footnotesize}
-        \begin{itemize}
-        \item Parte de una ``navaja suíza''
-        \item Concentrarse en cumplir sus objetivos
-        \item Filosofía unix y filosofía software libre
-        \end{itemize}
-      \end{footnotesize}
-    \item No se identifica con un entorno gráfico concreto
+    \item Entorno gráfico similar a Matlab + integración con otros editores/entornos... 
     \end{itemize}
 
   \end{itemize}
@@ -185,7 +178,7 @@ Lenguajes interpretado como lenguajes ``\emph{pegamento}'': lo mejor de dos mund
 \begin{itemize}
 \item \textbf{Octave}
 \item Python
-\item Lisp, scilab, Ruby,...
+\item ...
 \end{itemize}
 \end{itemize}
 
@@ -220,112 +213,36 @@ Lenguajes interpretado como lenguajes ``\emph{pegamento}'': lo mejor de dos mund
 % \end{frame}
 
 
-\subsection{Primeros pasos con qtOctave}
-
-\begin{frame}\frametitle{qtOctave}
-  \begin{center}
-    \pgfimage[width=0.8\linewidth]{img/qtoctave-captura}
-  \end{center}
-\end{frame}
-
-% ___________________________________________________________________________
-
-\hypertarget{qtoctave}{}
-\pdfbookmark[0]{qtOctave}{qtoctave}
-\begin{frame}\frametitle{qtOctave}
-\begin{itemize}
-\item {} 
-Entorno gráfico para Octave, desarrollado con librerías QT
-
-\item {} 
-Desarrollador principal: Pedro L. Lucas
-
-\item {} 
-Orígen: Proyecto presentado al \textit{I Concurso Uninversitario de Software
-Libre (2007)}
-
-\item {} 
-Apoyo de la OSLUCA (Alejandro Álvarez Ayllón).
-
-\item {} 
-Dónde conseguirlo:
-\begin{itemize}
-\item {} Blog:\par
-\href{http://qtoctave.wordpress.com/}{http://qtoctave.wordpress.com/}
-
-\item {} Forja de RedIris:\par
-\href{https://forja.rediris.es/projects/csl-qtoctave/}{https://forja.rediris.es/projects/csl-qtoctave/}
-
-\end{itemize}
-
-\end{itemize}
-
-\end{frame}
-
-% ___________________________________________________________________________
-
-\hypertarget{instalaci-n}{}
-\pdfbookmark[0]{Instalación}{instalaci-n}
-\begin{frame}\frametitle{Instalación}
-\begin{itemize}
-\item {} 
-Windows: utilizar el instalador disponible
-
-\item {} 
-MacOsX: Compilar el código fuente
-
-\item {} 
-GNU/Linux:
-\begin{itemize}
-\item {} 
-Instalar la versión disponible para tu distribución
-favorita
-
-\item {} 
-O bien descargar ``QtOctave portable''
-
-\item {} 
-O bien compilar código fuente
-
-\end{itemize}
-
-\end{itemize}
-
-\end{frame}
-
-% ___________________________________________________________________________
+\subsection{Primeros pasos}
 
 \hypertarget{primera-sesi-n-con-qtoctave}{}
-\pdfbookmark[0]{Primera sesión con qtOctave}{primera-sesi-n-con-qtoctave}
+\pdfbookmark[0]{Primera sesión con Octave}{primera-sesi-n-con-qtoctave}
 \begin{frame}
-\frametitle{Primera sesión con qtOctave}
-Arrancamos qtOctave...
+\frametitle{Primera sesión con Octave}
+Arrancamos Octave en modo gráfico...
 \begin{itemize}
 
 \item {} 
 Distintas secciones
-\begin{enumerate}
+
+\begin{itemize}
 
 \item {} 
- \alert<3>{Consola de Octave}: usando Octave como una calculadora
+  Explorador de archivos
 
+\item {} Espacio de trabajo: edición de variables
+\item {} Historial de comandos
 \item {} 
-  Edición de matrices: para amantes del ``point and click''
+ {Ventana de ``comandos''}: usando Octave como una calculadora
 
-\item {} 
-Editor de ficheros de Octave
-
-\item {} Lista de variables,
- \textbf{Directorio actual}
-\end{enumerate}
+\end{itemize}
 
 \item Otras utilidades:
 \begin{itemize}
-\item {}
-  \alert<2>{Acceso a la ayuda de Octave}
-  \footnote{\tiny\url{http://www.gnu.org/software/octave/doc/interpreter/index.html}}
+\item Editor integrado
+  \item {Acceso a la ayuda de Octave}%
+  \footnote{\tiny\url{chttps://docs.octave.org/interpreter/index.html}}
 \item Entorno mejorado para la representación de gráficos
-  \emph{(Easy Plot)}
 \item ...
 \end{itemize}
 
@@ -407,7 +324,7 @@ Almohadilla (\verb|#|) para comentarios
 Barra invertida (\verb|\|) para continuación de línea
 \end{itemize}
 
-Sabor a otros lenguajes de scripting: perl, python...
+Similar a otros lenguajes de scripting: python, bash...
 
 \small
 \begin{Octave}
@@ -453,13 +370,13 @@ ans = -4 + 7i
 \item \verb|help orden|: información sobre una orden de octave
 \item \verb|save fichero x y ...|\footnote{Octave puede grabar en numerosos
     formatos. Véase la ayuda}
-\item \verb|load fichero x y ...| ó \verb|load fichero|
+\item \verb|load fichero x y ... | ó \verb|load fichero|
 \end{itemize}
 Variables reservadas:
 \begin{itemize}
 \item \verb|ans|, \verb|eps|, \verb|inf|, \verb|nan|, \verb|pi|,
   \verb|i|, \verb|j|, \verb|nargin|, \verb|nargout|, \verb|realmin|,
-  \verb|realmax|, \verb|bitmax|, \verb|varargin|, \verb|varargout|
+  \verb|realmax|, \verb|flintmax|, \verb|varargin|, \verb|varargout|
 \end{itemize}
 \end{frame}
 
@@ -474,11 +391,11 @@ Variables reservadas:
   \item $\displaystyle z=\sqrt{x+y}$
   \item $\displaystyle t=\log(x+y+z)$
   \end{itemize}
-\item Almacenarlas en un fichero llamado ``variables.dat''
+\item Almacenarlas en un fichero (binario) llamado ``variables.dat''
 \item Borrar todas las variables y volverlas a cargar desde el fichero
 \end{enumerate}
-``Para subir nota'': Grabar en distintos formatos de fichero, por
-ejemplo, \emph{hdf5}
+\bigskip
+``Para subir nota'': Grabar estas variables en formato texto (\texttt{save -ascii}) llamado ``variables.txt'':
 \end{frame}
 
 % ___________________________________________________________________________
