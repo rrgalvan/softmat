@@ -1,0 +1,138 @@
+\usepackage{listings}
+\usepackage[final]{svninfo}
+
+
+%----------------------------------------------------------------------
+% Programas
+%----------------------------------------------------------------------
+\usepackage{xspace}
+\newcommand{\programfont}[1]{\textsf{\textsl{#1}}}
+\newcommand{\maxima}{\programfont{Maxima}\xspace}
+\newcommand{\wxmaxima}{\programfont{wxMaxima}\xspace}
+\newcommand{\xmaxima}{\programfont{xmaxima}\xspace}
+\newcommand{\emacs}{\programfont{Emacs}\xspace}
+\newcommand{\macsyma}{\programfont{Macsyima}\xspace}
+\newcommand{\mathematica}{\programfont{Mathematica}\xspace}
+\newcommand{\maple}{\programfont{Maple}\xspace}
+\newcommand{\matlab}{\programfont{Matlab}\xspace}
+\newcommand{\gnuplot}{\programfont{gnuplot}\xspace}
+\newcommand{\texmacs}{\programfont{\TeX macs}\xspace}
+\newcommand{\wims}{\programfont{WIMS}\xspace}
+\newcommand{\axiom}{\programfont{Axiom}\xspace}
+\newcommand{\yacas}{\programfont{YACAS}\xspace}
+\newcommand{\pari}{\programfont{Pari}\xspace}
+\newcommand{\superficie}{\programfont{Superficie}\xspace}
+%\newcommand{\octave}{\programfont{Octave}\xspace}
+\newcommand{\qtoctave}{\programfont{qtOctave}\xspace}
+\newcommand{\euler}{\programfont{EULER}\xspace}
+\newcommand{\tela}{\programfont{Tela}\xspace}
+\newcommand{\scilab}{\programfont{Scilab}\xspace}
+\newcommand{\lenguajeR}{\programfont{R}\xspace}
+\newcommand{\lenguajeS}{\programfont{S}\xspace}
+\newcommand{\sage}{\programfont{Sage}\xspace}
+\newcommand{\python}{\programfont{Python}\xspace}
+\newcommand{\perl}{\programfont{Perl}\xspace}
+\newcommand{\ruby}{\programfont{Ruby}\xspace}
+
+%----------------------------------------------------------------------
+% Listados de código Octave, Python mediante el paquete lstlistings
+%----------------------------------------------------------------------
+
+\usepackage{color}
+\definecolor{gray96}{gray}{.96}
+\definecolor{gray70}{gray}{.70}
+\definecolor{gray40}{gray}{.40}
+\definecolor{gray25}{gray}{.25}
+
+\usepackage{listings}
+\lstset{ 
+     frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+%     framexleftmargin=1cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray96},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+     commentstyle=\color{gray40},
+     keywordstyle=\bfseries,
+     identifierstyle=\itshape\bfseries\color{gray25},
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstloadlanguages{C++,python,sh}
+\lstnewenvironment{C++}[1][]
+    {\lstset{language=c++,#1}}
+    {}
+\lstnewenvironment{Octave}[1][]
+    {\lstset{language=Octave,#1}}
+    {}
+\lstnewenvironment{Python}[1][]
+    {\lstset{language=python,#1}}
+    {}
+\lstnewenvironment{sh}[1][]
+    {\lstset{language=sh,emph={$},emphstyle=\color{blue},#1}}    
+    {}
+%$
+\lstnewenvironment{Gnuplot}[1][]
+    {\lstset{language=Octave,
+     morekeywords={splot,replot}}}
+    {}
+
+% No disponible maxima :-(
+% \lstdefinestyle{maxima}
+%    {language=maxima,
+%    }
+
+%----------------------------------------------------------------------
+% Definición de \etiqueta{a}, \boton{a}, \menu{a,b,c},...
+%----------------------------------------------------------------------
+\newcommand{\etiqueta}[1]{\textsf{#1}}
+\newcommand{\boton}[1]{[\textsf{#1}]}
+\def\menu#1{%
+  \def\@separador{}
+  \COMAS@do#1,\relax,
+  \def\@separador{}}
+\def\COMAS@do#1,{%
+  \ifx\relax#1\empty\else
+  \@separador''\etiqueta{#1}''\def\@separador{ $\!\rightarrow\!$ }%
+  \expandafter\COMAS@do\fi}
+
+%
+% Defino \imagen como interfaz hacia \pgifmage y \captura hacia figure
+%
+%\newcommand{\imgpath}{img}
+%\newcommand{\imagen}[2][0.75\linewidth]{%  
+%  \pgfimage[width=#1]{\imgpath/#2}
+%}
+\newenvironment{captura}[3][0.75\linewidth]{%
+    \begin{figure}
+    \center
+    \fbox{\imagen[#1]{#2}}
+    \caption{#3}}
+  {\end{figure}}
+
+\newcommand{\tecla}[1]{\textsf{#1}}
+
+
+% Llaves
+
+\newcommand{\llaveizq}[1]{$\left\{
+  \begin{tabular}{@{}l@{}}#1\end{tabular}\right.$}
+\newcommand{\llaveder}[1]{$\left.
+  \begin{tabular}{@{}l@{}}#1\end{tabular}\right\}$}

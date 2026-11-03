@@ -1,0 +1,488 @@
+\hypertarget{control-de-flujo}{}
+\pdfbookmark[0]{Control de flujo}{control-de-flujo}
+\begin{frame}\frametitle{Control de flujo}
+\begin{itemize}
+\item {} 
+No hay diferencias con otros lenguajes de programación
+\emph{interpretados}
+\item {} 
+En estos lenguajes un bucle es en realidad un \emph{iterador}
+\end{itemize}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{condicionales}{}
+\pdfbookmark[0]{Condicionales}{condicionales}
+\begin{frame}[containsverbatim]
+\frametitle{Condicionales}
+
+Este es un ejemplo del uso de la sentencia \emph{if}:
+\begin{Octave}
+if saludo 
+  disp('hola') 
+else 
+  disp('no te saludo') 
+end
+\end{Octave}
+
+\begin{itemize}
+\item 
+  ¿Cuál es la salida si saludo=1?
+\item 
+  En Octave, podemos usar \texttt{endif} (no compatible Matlab!).
+  Igual ocurrirá con \texttt{endfor}, \texttt{endfunction}
+\end{itemize}
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{bucles}{}
+\pdfbookmark[0]{Bucles}{bucles}
+\begin{frame}[containsverbatim]
+\frametitle{Bucles}
+
+Ejemplo del uso de la sentencia \emph{for}:
+\begin{Octave}
+function primetest(n) 
+  printf('Numeros primos de 1 a %i\n',n) 
+  for i=1:n 
+    if isprime(i) 
+      disp(i) 
+    endif
+  endfor
+endfunction
+\end{Octave}
+\textbf{Ejercicio}:
+\begin{itemize}
+\item Programar la función en el fichero
+  ``\texttt{primetest.m}''
+\item 
+  ¿Cuál es la salida de esta subrutina si n=20?
+\end{itemize}
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{bucles-iteradores}{}
+\pdfbookmark[0]{Bucles iteradores}{bucles-iteradores}
+\begin{frame}[containsverbatim]
+\frametitle{Bucles iteradores}
+
+Recordad que secuencia == vector
+\begin{Octave}
+>> for i=[1,3,2,4,3,4,5] 
+> disp(i) 
+> end 
+ 1 
+ 3 
+ 2 
+ 4 
+ 3 
+ 4 
+ 5
+\end{Octave}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{otras-sentencias}{}
+\pdfbookmark[0]{Otras sentencias}{otras-sentencias}
+\begin{frame}\frametitle{Otras sentencias}
+\begin{quote}
+\begin{description}
+
+\item [while:]
+Bucle controlado por condición lógica
+
+\item [case:]
+Control de casos cerrados
+
+\item [try:]
+Sentencia de control para probar errores
+
+\item [break:]
+Permite abandonar directamente el interior de un bucle
+
+
+\item [continue:]
+Se utiliza para saltar al final de la actual iteración de un bucle
+
+
+\item [return:]
+Devuelve el control al programa principal
+
+\end{description}
+\vfill
+\textbf{Ejercicio} Realizar distintos ejemplos con las
+sentencias anteriores
+\end{quote}
+
+\end{frame}
+
+
+
+% ___________________________________________________________________________
+
+\hypertarget{funciones}{}
+\pdfbookmark[0]{Funciones}{funciones}
+\begin{frame}[containsverbatim]
+  \frametitle{Las funciones con algo más de profundidad}
+
+Varios valores devueltos
+\begin{Octave}
+function [m,M] = minmax(valores) 
+  % Esta funci'on toma como par'ametro un vector y 
+  % devuelve sus valores m'inimo y m'aximo
+  m = min(valores); 
+  M = max(valores);
+endfunction 
+ 
+help minmax
+lista = 1./(1:10);
+m = minmax(lista);
+\end{Octave}
+
+\textbf{Observaciones}
+\begin{itemize}
+\item Recordar que \texttt{endfunction} no es compatible con Matlab
+\item Si la función está en un fichero independiente, no es necesario
+\end{itemize}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{funciones-an-nimas}{}
+\pdfbookmark[0]{Funciones anónimas.}{funciones-an-nimas}
+\begin{frame}[containsverbatim]
+\frametitle{Funciones anónimas.}
+\small
+Definición
+\begin{itemize}
+\item En Matlab, se utilza un tipo especial de funciones,
+  (\emph{Function Handles}) para funciones sin necesidad de un archivo
+  adicional\footnote{Matlab no permite la definición de funciones de
+    forma interactiva (salvo \texttt{inline}). Octave sí lo permite}
+\item Para ello, se utiliza un ``nombre especial'': \verb|@|
+\end{itemize}
+\begin{Octave}
+>> testth = @(x,y) exp(-(x.^2+y.^2)) 
+>> testfh(1,i) 
+ans = 1
+\end{Octave}
+Utilidad: estas funciones  pueden pasarse como argumento para otra
+función
+\begin{Octave}
+>> f = @(x) x^2;
+>> integracion_numerica(f,0,1);
+\end{Octave}
+\end{frame}
+
+
+% ___________________________________________________________________________
+
+\begin{frame}[containsverbatim]
+\frametitle{Problemas arreglados por Octave}
+
+Declaración de funciones directamente en consola:
+\begin{Octave}
+>> function y=foo(x) 
+> y=3*x 
+> endfunction
+>> foo(4) 
+y =  12 
+ans =  12
+\end{Octave}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+ \frametitle{Problemas arreglados por Octave}
+ Varias funciones en un mismo archivo.
+ \begin{itemize}
+ \item 
+ Definimos el fichero \texttt{biblioteca.m}
+ \begin{Octave}
+   function y=cuadrado(x)
+     y=x^2;
+   end
+   function y=raiz(x)
+     y=sqrt(x);
+   end
+ \end{Octave}
+ \item 
+ Podemos acceder a las dos funciones:
+ \begin{Octave}
+   >> source('biblioteca.m')
+   >> cuadrado(raiz(2))
+   ans =  2.0000
+ \end{Octave}
+\end{itemize}
+\end{frame}
+
+
+
+% ___________________________________________________________________________
+\begin{frame}[containsverbatim]
+\frametitle{Problemas arreglados por Octave}
+
+Ejecución de ``funciones compuestas''
+\begin{Octave}
+>> a=rand(3,3)(1,2) 
+a =  0.14272
+\end{Octave}
+
+Permite expresiones mucho más compactas.
+
+\end{frame}
+
+
+% ___________________________________________________________________________
+
+\hypertarget{la-biblioteca-de-funciones}{}
+\pdfbookmark[0]{La biblioteca de funciones}{la-biblioteca-de-funciones}
+\begin{frame}\frametitle{La biblioteca de funciones}
+\begin{itemize}
+\item {} 
+Integración numérica (quad, quadl, quad2dg...)
+
+\item {} 
+Interpolación (interp1, interp2, polyfit, fft,...)
+
+\item {} 
+Estadística descriptiva (mean, std, median,...)
+
+\end{itemize}
+
+\textbf{Ejercicio}: Localiza funciones de tu interés y pruébalas!
+\begin{itemize}\item 
+  Indicación:
+  \begin{itemize}
+  \item Echa un vistazo a la ayuda de Octave (HTML)
+  \item Utiliza la función \texttt{lookfor} (busca funciones relacionadas
+    con una palabra clave). Por ejemplo, \texttt{lookfor fourier}.
+  \end{itemize}
+
+\end{itemize}
+
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{toolkits-en-octave}{}
+\pdfbookmark[0]{``Toolkits'' en Octave}{toolkits-en-octave}
+\begin{frame}\frametitle{``Toolkits'' en Octave}
+\begin{itemize}
+\item {} 
+\texttt{Tookits} ``oficiales'': Octave forge \href{http://octave.sourceforge.net}{http://octave.sourceforge.net}
+\begin{itemize}
+\item Mirar en la web la lista de \texttt{toolkits}
+\end{itemize}
+\item {} 
+Muchos otros.
+\begin{quote}
+\begin{itemize}
+
+\item MPITB (\texttt{Toolkit} de Paralelización con MPI, desarrollado por
+  Javier F. Baldomero, Universidad de Granada)\footnote{\url{http://atc.ugr.es/javier-bin/mpitb}}
+
+\item {} 
+Octaviz (VTK en Octave)
+
+\item {} 
+Octplot, etc
+
+\end{itemize}
+\end{quote}
+
+\item Problema: no hay garantías de compatibilidad con \texttt{Toolkits} de Matlab
+  \begin{itemize}
+  \item Independencia respecto a Octave y sus líneas estratégicas
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+% % ___________________________________________________________________________
+
+% \hypertarget{ejercicios}{}
+% \pdfbookmark[0]{Ejercicios}{ejercicios}
+% \begin{frame}\frametitle{Ejercicios}
+
+% \end{frame}
+
+% % ___________________________________________________________________________
+
+% \hypertarget{ejercicio}{}
+% \pdfbookmark[0]{Ejercicio}{ejercicio}
+% \begin{frame}\frametitle{Ejercicio}
+
+% Resolver la ecuación de Laplace en 1d con CC Dirichlet:
+
+% Mediante diferencias finitas.
+
+% \end{frame}
+
+% % ___________________________________________________________________________
+
+% \hypertarget{id6}{}
+% \pdfbookmark[0]{Ejercicio}{id6}
+% \begin{frame}\frametitle{Ejercicio}
+
+% \end{frame}
+
+% % ___________________________________________________________________________
+
+% \hypertarget{id7}{}
+% \pdfbookmark[0]{Ejercicio}{id7}
+% \begin{frame}\frametitle{Ejercicio}
+
+% Crear una \emph{función} que genere esta matriz con \emph{n} arbitrario
+
+% Usando también la función \emph{diag}
+
+% \end{frame}
+
+% % ___________________________________________________________________________
+
+% \hypertarget{id8}{}
+% \pdfbookmark[0]{Ejercicio}{id8}
+% \begin{frame}\frametitle{Ejercicio}
+
+% Crear una función que cree el término inEependiente con \emph{n}
+% arbitrario:
+
+% y resolver para \emph{n} = 7
+
+% \end{frame}
+
+% ___________________________________________________________________________
+
+\begin{frame}[containsverbatim]
+\frametitle{Extensiones dinámicas de Octave}
+\vspace{-0.5em}
+  Fichero \texttt{MiFuncion.cpp}:
+
+  \begin{C++}
+#include <oct.h> // Acceso al codigo de Octave!
+DEFUN_DLD(MiFuncion, args, nargout, "Descripcion")  
+{
+  // ... Codigo C++ ...
+  return octave_value()
+}
+  \end{C++}
+
+  Compilación (con \texttt{mkoctfile}, un envoltorio del compilador  C++)
+
+  \begin{sh}
+$ mkoctfile MiFuncion.cpp
+  \end{sh} %$
+  
+  Obtenemos el fichero \texttt{MiFuncion.oct}, que usaremos desde octave:
+  \begin{Octave}
+>> MiFuncion
+  \end{Octave}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Extensiones dinámicas de Octave: Hola Mundo!}
+
+Fichero \texttt{holamundo.cpp}
+\begin{C++}
+#include <octave/oct.h>
+DEFUN_DLD(holamundo, args, nargs , ``Programa hola mundo'')
+{
+  std::cout << ``Hola Mundo!'' << std::endl;
+  return octave_value()
+}
+\end{C++} 
+
+Lo compilamos (\verb|$ mkoctfile holamundo.cpp|) y lo usamos desde Octave:
+  \begin{Octave}
+>> holamundo
+``Hola Mundo!''
+  \end{Octave}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Extensiones dinámicas de Octave: $f(x)=x^2$ }
+\small
+Fichero \texttt{xcuadrado.cpp}:
+\begin{C++}
+#include <octave/oct.h>
+DEFUN_DLD(xcuadrado, args, , \
+  "Calcula el cuadrado de un real, x'')
+{
+  if(args.length() != 1) {
+    std::cerr << "ERROR: Se necesita tomar un valor" << std::endl;
+    return octave_value()
+  }
+  const double x = args(0).double_value();
+  octave_value y = x*x;
+  return y;
+}
+\end{C++}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Creación de módulos dinámicos C/C++ con SWIG} 
+
+  \begin{itemize}
+  \item 
+  \textbf{¿Qué es SWIG?} 
+  Potente interfaz para generar envolturas (\textit{wrappers}) que
+  permiten acceder a funciones (o clases) C/C++ desde Octave, Python,
+  Java, Perl,...
+  \item \textbf{¿Cómo usar SWIG?}
+    \begin{enumerate}
+    \item Tenemos varias funciones (o clases) C/C++ en un fichero
+      ``\verb|ejemplo.cpp|''
+    \item Escribimos un fichero de directivas ``\verb|ejemplo.i|'', donde
+      indicamos a qué funciones C/C++ deseamos acceder
+    \item A partir de él, SWIG genera un fichero C/C++ ``\verb|ejemplo_wrap.cpp|''
+    \item Compilamos ``\verb|ejemplo_wrap.cpp|'' $+$
+      ``\verb|ejemplo.cpp|'' (mediante \verb|mkoctfile|), obteniendo
+      ``\verb|ejemplo.oct|''
+    \item Desde Octave, ya podemos utilizar el módulo o \emph{toolkit}
+      ``\verb|ejemplo|'' 
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+% ___________________________________________________________________________
+
+\begin{frame}\frametitle{Bibliografía}
+\begin{itemize}
+\item {}
+\textit{Introducción informal a Matlab y Octave}:\par
+\href{http://iimyo.forja.rediris.es/}{http://iimyo.forja.rediris.es/}
+
+\item {}
+\emph{A. Quarteroni, F. Salieri} Cálculo científico con Matlab y
+Octave. Springer 2006.
+
+\item {}
+\textit{Documentación ``oficial'':}\par
+\href{http://www.gnu.org/software/octave/docs.html}{http://www.gnu.org/software/octave/docs.html}
+
+\item {} 
+\textit{Documentación de Octave-Forge:}\par
+\href{http://octave.sourceforge.net/docs.html}{http://octave.sourceforge.net/docs.html}
+\begin{itemize}
+\item {} 
+Incluye
+\href{http://octave.sourceforge.net/coda/coda.pdf}{http://octave.sourceforge.net/coda/coda.pdf},
+manual para extensiones dinámicas en C++.
+
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "modulo_octave"
+%%% End: 

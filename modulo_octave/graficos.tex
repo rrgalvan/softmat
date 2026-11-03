@@ -1,0 +1,272 @@
+
+\subsection{Gráficos 2D}
+
+% ___________________________________________________________________________
+
+\begin{frame}\frametitle{Representación gráfica}
+\begin{itemize}
+\item {} 
+Repesentar datos gráficamente en Octave es sencillo e intuitivo
+\item  Se utiliza, a bajo nivel, el programa
+Gnulot%
+\footnote{También es posible utilizar otros sistemas gráficos
+  distintos a Gnuplot, por ejemplo \emph{EasyPlot} (entorno gráfico
+  disponible en \texttt{qtOctave} y que puede activarse mediante el
+  menú   \texttt{Config}), \emph{octplot}, \emph{plplot},...
+}, 
+a través de un conjunto de funciones compatibles con Matlab,
+
+\item {} 
+Estas funciones son pocas porque no hay necesidades avanzadas (de
+tipo, por ejemplo, VTK)
+
+\end{itemize}
+
+\end{frame}
+
+% % ___________________________________________________________________________
+
+\begin{frame}[containsverbatim]
+\frametitle{Plot 2D}
+
+La manera más sencilla de representar datos es mediante la función
+\emph{plot}
+\begin{description}
+\item [Ejemplo:]
+Representar una curva en el plano a partir de dos series de
+datos:
+\begin{Octave}
+>> x=linspace(0,20,100); 
+>> y=exp(-x./100).*sin(x);
+>> plot(x,y);
+\end{Octave}
+\end{description}
+\end{frame}
+
+% ___________________________________________________________________________
+
+\begin{frame}\frametitle{Plot 2D (II)}
+
+El resultado (similar a)...
+\begin{figure}[htbp]\begin{center}
+%\includegraphics[width=600px]{files/abanico.jpg}
+\pgfimage[width=0.8\linewidth]{img/plot-exp-sin}
+\end{center}\end{figure}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Plot 2D (III)}
+
+Los atributos de las gráficas se introducen con la ventana activa
+\begin{description}
+\item [Ejemplo:]
+
+\begin{Octave}
+>> title('Una funcion cualquiera') 
+>> xlabel('Tiempo') 
+>> ylabel('Amplitud')
+\end{Octave}
+
+\end{description}
+
+\end{frame}
+
+
+% ___________________________________________________________________________
+
+\hypertarget{plot-iv}{}
+\pdfbookmark[0]{Plot 2D (IV)}{plot-iv}
+\begin{frame}\frametitle{Plot IV}
+
+El resultado...
+\begin{figure}[htbp]\begin{center}
+
+\pgfimage[width=0.8\linewidth]{img/abanico2}
+\end{center}\end{figure}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{plot-v}{}
+\pdfbookmark[0]{Plot 2D (V)}{plot-v}
+\begin{frame}[containsverbatim]
+\frametitle{Plot V}
+\small
+Podemos poner varias curvas con distintos estilos:
+\begin{Octave}
+>> x=linspace(0,20,50);
+>> plot (x,exp(x/10).*sin(x),':',...
+x,exp(x/10).*cos(x),'-^'); 
+\end{Octave}
+
+Añadir una leyenda a posteriori...
+\begin{Octave}
+>> legend('exp(x/10)*sin(x)','exp(x/10)*cos(x)');
+>> replot;  % Volver a pintar la gr'afica
+\end{Octave}
+
+Y exportar a un fichero
+\begin{Octave}
+  print -deps dibujo.eps
+\end{Octave}
+
+En la ayuda de \verb|print| está la lista de dispositivos (\verb|-d|)
+\end{frame}
+
+% ___________________________________________________________________________
+
+\begin{frame}\frametitle{Plot 2D (VI)}
+  El resultado...
+\begin{center}
+\pgfimage[width=0.9\linewidth]{img/plot-exp-sin-cos}
+\end{center}
+\end{frame}
+
+\subsection{Gráficos en 3D}
+
+
+\begin{frame}[containsverbatim]
+  \frametitle{Curvas 3D}
+  Las gráficas 3D más sencillas\footnote{Aunque
+  \texttt{plot3} tiene otras posibilidades, por ejemplo representar
+  familias de curvas (cuando \texttt{x}, \texttt{y}, \texttt{z} son
+  matrices). Véase la ayuda.} son curvas trazadas mediante la función
+  \emph{plot3}
+  \begin{description}
+  \item [Ejemplo:] Representar una curva en el espacio a partir de tres
+    vectores de datos, \verb|x|, \verb|y|, \verb|z|.
+\begin{Octave}
+  >> t=0:0.1:10*pi;
+  >> x=(1+sin(t)).*cos(t);
+  >> y=(1+sin(t)).*sin(t);
+  >> z=t;
+  >> plot3(x,y,z);
+\end{Octave}
+\end{description}
+\end{frame}
+
+\begin{frame}\frametitle{Curvas 3D: El resultado...}
+\begin{center}
+\pgfimage[width=0.9\linewidth]{img/plot3}
+\end{center}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Superficies 3D: Generación de mallas}
+  La función \verb|[x,y]=meshgrid(xmin:hx:xmax, ymin:hy:ymax)| genera
+  dos matrices \verb|x| e \verb|y|:
+  \begin{itemize}
+  \item Filas de \verb|x|: copias del vector \verb|xmin:hx:xmax|
+  \item Columnas de \verb|y|: vector \verb|(ymin:hy:ymax)'|
+  \end{itemize}
+  Ejemplo
+\begin{Octave}
+  >> [x,y]=meshgrid(0:2,0:1)
+  x =
+   0   1   2
+   0   1   2
+
+ y =
+   0   0   0
+   1   1   1
+\end{Octave}
+Los \verb|(x[i],y[j])| son un mallado de \verb|[xmin,xmax]|$\times$\verb|[ymin,ymax]|
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+  \frametitle{Dibujo de superficies 3D}
+  La orden \verb|mesh(x,y,z)| representa una superficie 3D, siendo
+  \begin{itemize}
+  \item \verb|x|, \verb|y| dos matrices que representan una malla
+  \item \verb|z| otra matriz que representa los valores $f(x,y)$
+  \end{itemize}
+  Ejemplo: gráfica de la función $f(x,y)=sin(x)*cos(y)$
+  \begin{Octave}
+    >> [x,y]=meshgrid(-pi:0.1:pi, -pi:0.1:pi);
+    >> z=sin(x).*sin(y);
+    >> mesh(x,y,z);
+  \end{Octave}
+  Podemos cambiar el punto de vista con la función \verb|view(a,e)|,
+  donde 
+  \begin{itemize}
+  \item \verb|a| es el \emph{azimut} (ángulo de rotación en el plano xy)
+  \item \verb|e| es la \emph{elevación} vertical
+  \end{itemize}
+  \begin{Octave}
+  >> view(30,60);
+  >> colorbar('East'); % Pintar una barra vertical
+  \end{Octave}
+\end{frame}
+
+\begin{frame}\frametitle{Superficies 3D: El resultado...}
+\begin{center}
+\pgfimage[width=0.9\linewidth]{img/mesh}
+\end{center}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Curvas de nivel}
+  \begin{itemize}
+  \item
+    La orden \verb|contour(x,y,z)| representa curvas de nivel
+  \item \verb|x|, \verb|y| y \verb|z| tienen el mismo significado que
+    en la orden \verb|mesh|
+  \item Acepta un cuarto parámetro, \verb|n| (número de curvas)
+  \item La variante \verb|contourf| dibuja un degradado de colores
+  \end{itemize}
+  \begin{Octave}
+  >> [x,y]=meshgrid(-pi:0.1:pi, -pi:0.1:pi);
+  >> z=sin(x).*sin(y);
+  >> contourf(x,y,z);    
+  \end{Octave}
+\end{frame}
+
+\begin{frame}\frametitle{Curvas de nivel: El resultado...}
+\begin{center}
+\pgfimage[width=0.9\linewidth]{img/contour}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Mallas estructuradas 3D con VTK}
+\begin{enumerate}
+\item Creamos un array 3D y lo grabamos en formato \verb|hdf5|
+  \begin{Octave}
+nx=ny=nz=4; % Por ejemplo, 4 ptos en cada eje
+A=rand(nx,ny,nz); % array aleatorio nx*ny*nz
+save -hdf5 "malla_estruc.h5" A;
+  \end{Octave}
+\item Convertimos el fichero \verb|hdf5| en formato \verb|vtk|
+  \begin{sh}
+$ h5tovtk -d /A/value malla_estruc.h5
+  \end{sh}  % $fin de modo matemático, editor!
+  \begin{itemize}
+  \item \footnotesize Se ha usado el programa \texttt{h5tovtk} (en
+    Ubuntu, paquete h5utils).
+  \item \footnotesize La opción ``\texttt{-d}'' indica la ruta hacia
+    el ``dataset'', dentro del fichero (ésta se puede localizar con
+    el programa \texttt{h5dump} o \texttt{h5ls -r})
+  \end{itemize}
+\item Visualizamos el fichero resultante (\texttt{malla\_estruc.vtk})
+  con \texttt{mayavi2} o con \texttt{paraview} (filtro ``\emph{Treshold}'')
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{Resultado (generado con paraview)}
+\begin{center}
+\pgfimage[width=0.9\linewidth]{img/cubo}
+\end{center}
+\end{frame}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "modulo_octave"
+%%% End: 

@@ -1,0 +1,101 @@
+%
+% (c) Guillem Borrell, Rafael Rodríguez Galván.
+% Se autoriza la utilización de este documento según la licencia GFDL,
+% sin secciones invariantes, texto de portada ni de respaldo.
+%
+
+\documentclass[12pt,xcolor=svgnames,spanish]{beamer}
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+%\usepackage[scaled]{helvet}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{smbslides}
+
+\mode<presentation>
+{
+%  \usetheme{Frankfurt}
+  \usetheme{Madrid}
+  \usecolortheme{UCA}
+
+%  \useoutertheme{infolines}
+  %\setbeamersize{text margin left=1cm,text margin right=1cm}
+ \useinnertheme{circles}
+  %\usecolortheme{wolverine}
+
+ \addtobeamertemplate{block begin}{}
+  %{\setbeamercolor{local structure}{fg=block title.bg}}
+
+  % Parece no tener efecto cuando se presenta el índice. ¿Es por el modo?
+  %\setbeamercovered{dynamic}
+}
+
+\AtBeginSection[] % Do nothing for \section*
+{
+  \begin{frame}<beamer>
+   \frametitle{Sección \thesection. \insertsection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[] % Do nothing for \subsection*
+{
+  \begin{frame}<beamer>
+    \frametitle{Sección \thesection.\thesubsection 
+      \par \small{\insertsection: \insertsubsection}}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\title{SM: Cálculo numérico con Octave}
+
+\pgfdeclareimage[height=1.76mm]{ccsa}{img/cc-bysa}
+\logo{\pgfuseimage{ccsa}}
+\author{J. Rafael Rodríguez Galván}
+\institute[OSLUCA]{Departamento de Matemáticas. Universidad de Cádiz)}
+\date[i-MATH, Santiago 2010]{Sofware en Matemáticas. Máster Interuniversitario en Matemáticas\today}
+
+
+\includeonly{toma_contacto}
+%\includeonly{matrices}
+%\includeonly{graficos, programacion}
+%\includeonly{programacion}
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+\begin{frame}
+\vfill\tiny
+(c) Rafael Rodríguez Galván, Guillém Borrell.
+Se autoriza la utilización de este documento según la licencia GFDL,
+sin secciones invariantes, texto de portada ni de respaldo.
+\par
+\hfill\url{http://ciencialibre.forja.rediris.es}
+\end{frame}
+
+%___________________________________________________________________________
+
+\section{Toma de contacto con Octave}
+\include{toma_contacto}
+
+\section{Matrices y álgebra matricial}
+\include{matrices}
+
+\section{Representación de gráficos}
+\include{graficos}
+
+\section{Programación con Octave}
+\include{programacion}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

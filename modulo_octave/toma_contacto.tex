@@ -1,0 +1,489 @@
+
+\subsection{Introducción a Octave}
+
+% ___________________________________________________________________________
+
+\hypertarget{qu-es-octave-i}{}
+\pdfbookmark[0]{Qué es Octave}{qu-es-octave-i}
+\begin{frame}\frametitle{Qué es Octave}
+\begin{itemize}
+\item {} 
+Lenguaje interpretado de alto nivel, orientado al cálculo matricial
+
+\item {} 
+Intérprete para este lenguaje
+
+\item {} 
+Licencia libre (GPL)
+\begin{itemize}
+\item {} 
+Concebido en 1988 por John W. Eaton
+
+\item {} 
+Amplia comunidad de usuarios (\href{http://www.octave.org}{http://www.octave.org})
+
+\item {} 
+Código fuente C++
+\begin{itemize}
+\item {} 
+Potente biblioteca de cálculo matricial (GPL)
+
+\item {} 
+Fácilmente extensible en C++
+
+\end{itemize}
+
+\item {} 
+Disponible para numerosos sistemas y arquitecturas
+
+\end{itemize}
+
+
+\item Octave \emph{no} está especializado en \emph{cálculo simbólico}
+    \begin{itemize}
+    \item {} Para ello, existen numerosas herramientas libres como
+      \textbf{Maxima}, Axiom, Pari/GP o \emph{Ginac}
+    \end{itemize}
+    
+\item 
+    Existen muchos otros entornos de cálculo numérico libres:
+    \begin{itemize}
+    \item {} Scilab, Euler, Freemat, Python/Scipy...    
+    \end{itemize}
+    
+\end{itemize}
+
+\end{frame}
+
+
+% ___________________________________________________________________________
+
+\hypertarget{potencialidad-de-octave}{}
+\pdfbookmark[0]{Potencialidad de Octave}{potencialidad-de-octave}
+\begin{frame}\frametitle{Potencialidad de Octave}
+\begin{itemize}
+\item {} 
+Curva de acceso poco empinada
+
+\item {} 
+Incluye ``de serie'':
+\begin{itemize}
+\item {} 
+Operaciones matriciales
+
+\item {} 
+Resolución de (sistemas de) ecuaciones lineales y no lineales
+
+\item {} 
+Cálculo de autovalores y autovectores
+
+\item {} 
+Cálculo de raíces de ecuaciones no lineales
+
+\item {} 
+Aproximación numérica de funciones y datos (interpolación,
+FFT, funciones spline,...)
+
+\item {} 
+Cálculo numérico de derivadas e integrales
+
+\item {} 
+Resolución numérica de ecuaciones diferenciales
+
+\item {} 
+Representación de gráficas 2D y 3D (a través de Gnuplot)
+
+\item {} 
+...
+
+\end{itemize}
+
+\item Compatibilidad con Matlab...
+
+\end{itemize}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+
+\hypertarget{octave-y-matlab}{}
+\pdfbookmark[0]{Octave y Matlab}{octave-y-el-lenguaje-matlab}
+\begin{frame}\frametitle{Octave y Matlab}
+  \begin{itemize}
+  \item 
+    Alta compatibilidad con el ``\textbf{lenguaje Matlab}''
+    \begin{itemize}
+    \item {} ventajas
+      \begin{itemize}
+      \item fácil migración desde Matlab
+      \item hereda puntos fuertes
+      \end{itemize}
+    \item {} inconvenientes
+      \begin{itemize}
+      \item freno a la innovación propia
+      \item hereda puntos débiles
+      \end{itemize}
+    \end{itemize}
+  
+  \item ¿Dónde se pierde la compatibilidad?
+    \begin{itemize}
+    \item Extensiones al lenguaje Matlab
+    \item ``Toolkits''
+    \end{itemize}
+
+  \item Filosofía propia: ``\emph{lenguaje de scripting científico}''
+    \begin{itemize}
+    \item Se complementa con otras herramientas libres
+      \begin{footnotesize}
+        \begin{itemize}
+        \item Parte de una ``navaja suíza''
+        \item Concentrarse en cumplir sus objetivos
+        \item Filosofía unix y filosofía software libre
+        \end{itemize}
+      \end{footnotesize}
+    \item No se identifica con un entorno gráfico concreto
+    \end{itemize}
+
+  \end{itemize}
+\end{frame}
+
+% % ___________________________________________________________________________
+
+
+\hypertarget{qu-es-octave-ii}{}
+\pdfbookmark[0]{Octave y Matlab}{qu-es-octave-ii}
+\begin{frame}\frametitle{Lenguajes interpretados en cálculo científico}
+
+\begin{itemize}
+\item {} 
+Lenguajes \emph{interpretados}:
+\begin{itemize}
+\item {} 
+Reducción del ciclo de desarrollo (relación esfuerzo/resultado)
+
+\item {} 
+Polivalencia, acceso a herramientas de alto nivel
+
+\item {}
+Concentrarse en las dificultades del problema (no en
+  las del lenguaje)
+
+\end{itemize}
+
+\item {} 
+Lenguajes \emph{compilados}: Potencia de cálculo
+
+\item {} 
+Lenguajes interpretado como lenguajes ``\emph{pegamento}'': lo mejor de dos mundos
+\begin{itemize}
+\item 90\% del código: lenguaje interpertado
+\item 10\% restante (zonas críticas en potencia de calculo): lenguaje
+  compilado
+\end{itemize}
+\item Para tareas científicas:
+\begin{itemize}
+\item \textbf{Octave}
+\item Python
+\item Lisp, scilab, Ruby,...
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+% % ___________________________________________________________________________
+
+% \hypertarget{interfaces}{}
+% \pdfbookmark[0]{Interfaces}{interfaces}
+% \begin{frame}\frametitle{Interfaces}
+% \begin{itemize}
+% \item {} 
+% Octave incluye una interfaz muy sencilla en forma de
+% consola (no gráfica)
+
+% \item {} 
+% Existen algunas alternativas:
+% \begin{itemize}
+% \item {} 
+% Modo Octave \textbf{Emacs}
+
+% \item {} 
+% \textbf{qtOctave}
+
+% \item {} 
+% Otras
+
+% \end{itemize}
+
+% \end{itemize}
+
+% \end{frame}
+
+
+\subsection{Primeros pasos con qtOctave}
+
+\begin{frame}\frametitle{qtOctave}
+  \begin{center}
+    \pgfimage[width=0.8\linewidth]{img/qtoctave-captura}
+  \end{center}
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{qtoctave}{}
+\pdfbookmark[0]{qtOctave}{qtoctave}
+\begin{frame}\frametitle{qtOctave}
+\begin{itemize}
+\item {} 
+Entorno gráfico para Octave, desarrollado con librerías QT
+
+\item {} 
+Desarrollador principal: Pedro L. Lucas
+
+\item {} 
+Orígen: Proyecto presentado al \textit{I Concurso Uninversitario de Software
+Libre (2007)}
+
+\item {} 
+Apoyo de la OSLUCA (Alejandro Álvarez Ayllón).
+
+\item {} 
+Dónde conseguirlo:
+\begin{itemize}
+\item {} Blog:\par
+\href{http://qtoctave.wordpress.com/}{http://qtoctave.wordpress.com/}
+
+\item {} Forja de RedIris:\par
+\href{https://forja.rediris.es/projects/csl-qtoctave/}{https://forja.rediris.es/projects/csl-qtoctave/}
+
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{instalaci-n}{}
+\pdfbookmark[0]{Instalación}{instalaci-n}
+\begin{frame}\frametitle{Instalación}
+\begin{itemize}
+\item {} 
+Windows: utilizar el instalador disponible
+
+\item {} 
+MacOsX: Compilar el código fuente
+
+\item {} 
+GNU/Linux:
+\begin{itemize}
+\item {} 
+Instalar la versión disponible para tu distribución
+favorita
+
+\item {} 
+O bien descargar ``QtOctave portable''
+
+\item {} 
+O bien compilar código fuente
+
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+% ___________________________________________________________________________
+
+\hypertarget{primera-sesi-n-con-qtoctave}{}
+\pdfbookmark[0]{Primera sesión con qtOctave}{primera-sesi-n-con-qtoctave}
+\begin{frame}
+\frametitle{Primera sesión con qtOctave}
+Arrancamos qtOctave...
+\begin{itemize}
+
+\item {} 
+Distintas secciones
+\begin{enumerate}
+
+\item {} 
+ \alert<3>{Consola de Octave}: usando Octave como una calculadora
+
+\item {} 
+  Edición de matrices: para amantes del ``point and click''
+
+\item {} 
+Editor de ficheros de Octave
+
+\item {} Lista de variables,
+ \textbf{Directorio actual}
+\end{enumerate}
+
+\item Otras utilidades:
+\begin{itemize}
+\item {}
+  \alert<2>{Acceso a la ayuda de Octave}
+  \footnote{\tiny\url{http://www.gnu.org/software/octave/doc/interpreter/index.html}}
+\item Entorno mejorado para la representación de gráficos
+  \emph{(Easy Plot)}
+\item ...
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+
+
+% ___________________________________________________________________________
+
+\begin{frame}[containsverbatim]
+\frametitle{Octave como una calculadora (I)}
+
+\begin{itemize}
+\item Operadores numéricos habituales: 
+  \par \verb|+|, \verb|-|, \verb|*|, \verb|/|, \verb|^|
+\item Paréntesis para modificar la preferencia
+\item El resultado se almacena en la variable \verb|ans|
+\item Re-editar órdenes: $\uparrow$, $\downarrow$, \emph{(Mayúsculas
+    +)} $\rightarrow$, $\leftarrow$ 
+\end{itemize}
+
+\small
+\begin{Octave}
+>> 1+3*1.5
+ans =  5.5000
+>> (2+3)^10
+ans =  9765625
+>> ans/5^7
+ans =  125
+\end{Octave}
+
+
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Octave como una calculadora (II)}
+Estilo Matlab...
+\begin{itemize}
+\item {} 
+Comillas simples para introducir una cadena de texto
+
+\item {} 
+Porcentaje para comentarios
+
+\item {} 
+Tres puntos para continuación de línea
+
+\item {} 
+Punto y coma para un retorno de carro sin salida
+
+\end{itemize}
+
+\small
+\begin{Octave}
+>> 'Esto es una cadena de texto'
+ans = Esto es una cadena de texto
+>> 20000000 + 3100020500 +...
+> 13
+ans =  3.1200e+09
+>> 2+2; % No se muestra el resultado
+\end{Octave}
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Octave como una calculadora (II)}
+Estilo Octave (no compatible!)...
+\begin{itemize}
+\item {} 
+Comillas dobles para introducir una cadena de texto
+
+\item {} 
+Almohadilla (\verb|#|) para comentarios
+
+\item {} 
+Barra invertida (\verb|\|) para continuación de línea
+\end{itemize}
+
+Sabor a otros lenguajes de scripting: perl, python...
+
+\small
+\begin{Octave}
+>> ``Esto es una cadena de texto''
+ans = Esto es una cadena de texto
+>> 20000000 + 3100020500 +\
+> 13
+ans =  3.1200e+09
+>> 2+2; # No se muestra el resultado
+\end{Octave}
+
+\end{frame}
+
+
+\begin{frame}[containsverbatim]
+\frametitle{Más madera...}
+\small
+\begin{Octave}
+>> 1/7          % Aritmetica punto fijo
+ans =  0.14286
+>> format long  % Mostrar doble precisi'on
+>> 1/7 
+ans =  0.142857142857143
+>> format       % O bien 'format short'
+>> sin(pi)      %  sen(pi) = 0 ?
+ans =  1.2246e-16
+>> eps          % El "cero" de la maquina
+ans =  2.2204e-16
+>> x=1+2*i; y=2+3*i;  % Asignacion, complejos
+>>  x*y
+ans = -4 + 7i
+\end{Octave}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Variables}
+Órdenes:
+\begin{itemize}
+\item \verb|who|: listado de variables
+\item \verb|whos|: listado detallado
+\item \verb|clear x y ...|: borrar variables \verb|x|, \verb|y|,...
+\item \verb|clear all|: borrarlas todas
+\item \verb|help orden|: información sobre una orden de octave
+\item \verb|save fichero x y ...|\footnote{Octave puede grabar en numerosos
+    formatos. Véase la ayuda}
+\item \verb|load fichero x y ...| ó \verb|load fichero|
+\end{itemize}
+Variables reservadas:
+\begin{itemize}
+\item \verb|ans|, \verb|eps|, \verb|inf|, \verb|nan|, \verb|pi|,
+  \verb|i|, \verb|j|, \verb|nargin|, \verb|nargout|, \verb|realmin|,
+  \verb|realmax|, \verb|bitmax|, \verb|varargin|, \verb|varargout|
+\end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Ejercicios}
+\begin{enumerate}
+\item
+  Definir las variables:
+  \begin{itemize}
+  \item $\displaystyle x=e^{\pi-1}$
+  \item $\displaystyle y=\frac{1}{1+\frac{1}{x+2}}$
+  \item $\displaystyle z=\sqrt{x+y}$
+  \item $\displaystyle t=\log(x+y+z)$
+  \end{itemize}
+\item Almacenarlas en un fichero llamado ``variables.dat''
+\item Borrar todas las variables y volverlas a cargar desde el fichero
+\end{enumerate}
+``Para subir nota'': Grabar en distintos formatos de fichero, por
+ejemplo, \emph{hdf5}
+\end{frame}
+
+% ___________________________________________________________________________
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "modulo_octave"
+%%% End: 
