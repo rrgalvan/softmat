@@ -217,18 +217,6 @@ m = minmax(lista);
 
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Ejercicio}
-\begin{itemize}
-    \item Programa una función llamada \texttt{integracion\_numer(f, a, b, N)}, que aplique la fórmula de los trapecios compuesta\footnote{\url{https://es.wikipedia.org/wiki/Regla_del_trapecio\#Regla_del_trapecio_compuesta}} con \texttt{N} subintervalos para aproximar la integral de una función $f$ en un intervalo $(a,b)$.
-  \item Calcula de forma manual la integral de algunas funciones sencillas, por ejemplo $f_1(x)=x^2$, $f_2(x)=\cos(x)$, $f_3(x)=3\cos(3x)\cdot e^{\sin(3x)}$.
-  \item Aproxima estas integrales con la función que hemos definido con diferentes valores de $N$ y evalúa el error respecto a la interal exacta que calculaste
-  \item Genera una tabla con los resultados
-\end{itemize}
-\end{frame}
-
-% ___________________________________________________________________________
-
 \hypertarget{funciones-an-nimas}{}
 \pdfbookmark[0]{Funciones anónimas.}{funciones-an-nimas}
 \begin{frame}[containsverbatim]
@@ -237,7 +225,7 @@ m = minmax(lista);
 Definición
 \begin{itemize}
 \item Matlab como casi todos los senguajes, define un tipo especial de funciones,
-  (\emph{funciones lambda}). 
+  (\emph{funciones lambda o anónimas}). 
  Para ello, se utiliza el carácter \verb|@|
 \item Permite definr funciones breves sin necesidad de un archivo
   adicional\footnote{Matlab no permite la definición de funciones de
@@ -252,10 +240,31 @@ ans = 1
 Utilidad: estas funciones  pueden pasarse como argumento para otra
 función
 \begin{Octave}
->> integracion_numer(@(x) x^2, 0, 1);
+>> integral_numer(@(x) x^2, 0, 1);
 \end{Octave}
 \end{frame}
 
+
+% ___________________________________________________________________________
+
+
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio}
+\begin{itemize}
+    \item Programa una función llamada \texttt{integral\_numer(f, a, b, N)} que aplique la fórmula de los trapecios compuesta\footnote{\url{https://es.wikipedia.org/wiki/Regla_del_trapecio\#Regla_del_trapecio_compuesta}} con \texttt{N} subintervalos para aproximar la integral de una función $f$ en un intervalo $(a,b)$.
+  \item Consideremos las siguientes integrales sencillas:
+    \begin{itemize} \scriptsize \setlength{\itemsep}{2pt}
+      \item $f_1(x)=x^2$ en $[0, 2]$\dotfill $\int_0^2 f_1(x) \; dx = \left. x^3/3 \right]_0^2$
+      \item $f_2(x)=\cos(x)$ en $[0,\pi/2]$ \dotfill 
+        $\int_0^{\pi/2} f_2(x) \; dx = \left. \sin(x) \right]_0^{\pi/2}$
+      \item $f_3(x)=3\cos(3x)\cdot e^{\sin(3x)}$ en $[0,\pi/6]$
+        \dotfill $\int f_3(x) \; dx =  \left. e^{\sin(3x)} \right]_0^{\pi/6}$
+    \end{itemize}
+  \item Usa la función \texttt{integral\_numer} para aproximar estas integrales, con diferentes valores de $N$, por ejemplo $N\in\{10,50,100,500\}$. En cada caso, evalúa el error respecto a la integral exacta 
+  \item Genera una tabla con los resultados
+\end{itemize}
+\end{frame}
 
 % ___________________________________________________________________________
 

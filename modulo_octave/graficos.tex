@@ -40,7 +40,7 @@ datos:
 El resultado (similar a)...
 \begin{figure}[htbp]\begin{center}
 %\includegraphics[width=600px]{files/abanico.jpg}
-\pgfimage[width=0.8\linewidth]{img/plot-exp-sin}
+\pgfimage[width=0.8\linewidth]{img/plot-exp-sin.png}
 \end{center}\end{figure}
 
 \end{frame}
@@ -75,7 +75,7 @@ Los atributos de las gráficas se introducen con la ventana activa
 El resultado...
 \begin{figure}[htbp]\begin{center}
 
-\pgfimage[width=0.8\linewidth]{img/abanico2}
+\pgfimage[width=0.8\linewidth]{img/abanico2.png}
 \end{center}\end{figure}
 
 \end{frame}
@@ -89,9 +89,10 @@ El resultado...
 \small
 Podemos poner varias curvas con distintos estilos:
 \begin{Octave}
->> x=linspace(0,20,50);
+>> set(0, 'DefaultLineLineWidth', 1.5);   % Grosor 
+>> x = linspace(0,20,50);
 >> plot (x,exp(x/10).*sin(x),':',...
-x,exp(x/10).*cos(x),'-^'); 
+         x,exp(x/10).*cos(x),'-^'); 
 \end{Octave}
 
 Añadir una leyenda a posteriori...
@@ -113,7 +114,7 @@ En la ayuda de \verb|print| está la lista de dispositivos (\verb|-d|)
 \begin{frame}\frametitle{Plot 2D (VI)}
   El resultado...
 \begin{center}
-\pgfimage[width=0.9\linewidth]{img/plot-exp-sin-cos}
+\pgfimage[width=0.85\linewidth]{img/plot-exp-sin-cos.png}
 \end{center}
 \end{frame}
 
@@ -142,7 +143,7 @@ En la ayuda de \verb|print| está la lista de dispositivos (\verb|-d|)
 
 \begin{frame}\frametitle{Curvas 3D: El resultado...}
 \begin{center}
-\pgfimage[width=0.9\linewidth]{img/plot3}
+\pgfimage[width=0.9\linewidth]{img/plot3.png}
 \end{center}
 \end{frame}
 
@@ -196,7 +197,7 @@ Los \verb|(x[i],y[j])| son un mallado de \verb|[xmin,xmax]|$\times$\verb|[ymin,y
 
 \begin{frame}\frametitle{Superficies 3D: El resultado...}
 \begin{center}
-\pgfimage[width=0.9\linewidth]{img/mesh}
+\pgfimage[width=0.9\linewidth]{img/mesh-3d.png}
 \end{center}
 \end{frame}
 
@@ -219,41 +220,41 @@ Los \verb|(x[i],y[j])| son un mallado de \verb|[xmin,xmax]|$\times$\verb|[ymin,y
 
 \begin{frame}\frametitle{Curvas de nivel: El resultado...}
 \begin{center}
-\pgfimage[width=0.9\linewidth]{img/contour}
+\pgfimage[width=0.9\linewidth]{img/contour.png}
 \end{center}
 \end{frame}
 
 
-\begin{frame}[containsverbatim]
-\frametitle{Mallas estructuradas 3D con VTK}
-\begin{enumerate}
-\item Creamos un array 3D y lo grabamos en formato \verb|hdf5|
-  \begin{Octave}
-nx=ny=nz=4; % Por ejemplo, 4 ptos en cada eje
-A=rand(nx,ny,nz); % array aleatorio nx*ny*nz
-save -hdf5 "malla_estruc.h5" A;
-  \end{Octave}
-\item Convertimos el fichero \verb|hdf5| en formato \verb|vtk|
-  \begin{sh}
-$ h5tovtk -d /A/value malla_estruc.h5
-  \end{sh}  % $fin de modo matemático, editor!
-  \begin{itemize}
-  \item \footnotesize Se ha usado el programa \texttt{h5tovtk} (en
-    Ubuntu, paquete h5utils).
-  \item \footnotesize La opción ``\texttt{-d}'' indica la ruta hacia
-    el ``dataset'', dentro del fichero (ésta se puede localizar con
-    el programa \texttt{h5dump} o \texttt{h5ls -r})
-  \end{itemize}
-\item Visualizamos el fichero resultante (\texttt{malla\_estruc.vtk})
-  con \texttt{mayavi2} o con \texttt{paraview} (filtro ``\emph{Treshold}'')
-\end{enumerate}
-\end{frame}
-
-\begin{frame}\frametitle{Resultado (generado con paraview)}
-\begin{center}
-\pgfimage[width=0.9\linewidth]{img/cubo}
-\end{center}
-\end{frame}
+% \begin{frame}[containsverbatim]
+% \frametitle{Mallas estructuradas 3D con VTK}
+% \begin{enumerate}
+% \item Creamos un array 3D y lo grabamos en formato \verb|hdf5|
+%   \begin{Octave}
+% nx=ny=nz=4; % Por ejemplo, 4 ptos en cada eje
+% A=rand(nx,ny,nz); % array aleatorio nx*ny*nz
+% save -hdf5 "malla_estruc.h5" A;
+%   \end{Octave}
+% \item Convertimos el fichero \verb|hdf5| en formato \verb|vtk|
+%   \begin{sh}
+% $ h5tovtk -d /A/value malla_estruc.h5
+%   \end{sh}  % $fin de modo matemático, editor!
+%   \begin{itemize}
+%   \item \footnotesize Se ha usado el programa \texttt{h5tovtk} (en
+%     Ubuntu, paquete h5utils).
+%   \item \footnotesize La opción ``\texttt{-d}'' indica la ruta hacia
+%     el ``dataset'', dentro del fichero (ésta se puede localizar con
+%     el programa \texttt{h5dump} o \texttt{h5ls -r})
+%   \end{itemize}
+% \item Visualizamos el fichero resultante (\texttt{malla\_estruc.vtk})
+%   con \texttt{mayavi2} o con \texttt{paraview} (filtro ``\emph{Treshold}'')
+% \end{enumerate}
+% \end{frame}
+%
+% \begin{frame}\frametitle{Resultado (generado con paraview)}
+% \begin{center}
+% \pgfimage[width=0.9\linewidth]{img/cubo.png}
+% \end{center}
+% \end{frame}
 
 
 %%% Local Variables: 
