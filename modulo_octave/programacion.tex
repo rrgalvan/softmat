@@ -126,6 +126,70 @@ sentencias anteriores
 
 % ___________________________________________________________________________
 
+\begin{frame}[fragile]{Funciones en MATLAB}
+
+
+\lstset{
+  language=Matlab,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue!70!black}\bfseries,
+  commentstyle=\color{green!40!black}\itshape,
+  frame=single,
+  framerule=0.3pt,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  numbers=none
+}
+
+\begin{columns}[T]
+  \begin{column}{0.52\textwidth}
+    \textbf{1. Función en fichero} (\texttt{\small area\_circulo.m})
+\begin{lstlisting}
+function [A, P] = area_circulo(r)
+% AREA_CIRCULO  Area y perimetro
+%   [A, P] = area_circulo(r)
+  A = pi * r.^2;
+  P = 2 * pi * r;
+end
+\end{lstlisting}
+    \vspace{0.4em}
+    \textbf{Uso:}\vspace{-0.5em}
+\begin{lstlisting}
+[A, P] = area_circulo(2);
+A = area_circulo(1:3);
+\end{lstlisting}
+  \end{column}
+
+  \begin{column}{0.46\textwidth}
+    \textbf{2. Función anónima}
+\begin{lstlisting}
+f = @(x) x.^2 + 1;
+f(3)       % 10
+a = 2;
+g = @(x) a*x;  % captura a
+\end{lstlisting}
+    \vspace{0.4em}
+    \textbf{Como argumento:}
+\begin{lstlisting}
+fzero(@(x) cos(x)-x, 0.5)
+integral(@(x) exp(-x.^2), 0, 1)
+\end{lstlisting}
+  \end{column}
+\end{columns}
+
+\vspace{0.6em}
+\begin{itemize}
+  \item El fichero debe llamarse \texttt{area\_circulo.m}: manda el nombre del fichero.
+  \item Varias salidas entre corchetes; \texttt{nargin} y \texttt{nargout} dan el n.º de argumentos.
+  \item Usa \texttt{.*}, \texttt{./}, \texttt{.\^{}} para que la función admita vectores.
+  \item Una anónima es una sola expresión y congela las variables externas al definirla.
+\end{itemize}
+\end{frame}
+
+
+% ___________________________________________________________________________
+
 \hypertarget{funciones}{}
 \pdfbookmark[0]{Funciones}{funciones}
 \begin{frame}[containsverbatim]
@@ -148,9 +212,19 @@ m = minmax(lista);
 \textbf{Observaciones}
 \begin{itemize}
 \item Recordar que \texttt{endfunction} no es compatible con Matlab
-\item Si la función está en un fichero independiente, no es necesario
+\item \texttt{endfunction} es opcional si función está en su fichero 
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ejercicio}
+\begin{itemize}
+    \item Programa una función llamada \texttt{integracion\_numer(f, a, b, N)}, que aplique la fórmula de los trapecios compuesta\footnote{\url{https://es.wikipedia.org/wiki/Regla_del_trapecio\#Regla_del_trapecio_compuesta}} con \texttt{N} subintervalos para aproximar la integral de una función $f$ en un intervalo $(a,b)$.
+  \item Calcula de forma manual la integral de algunas funciones sencillas, por ejemplo $f_1(x)=x^2$, $f_2(x)=\cos(x)$, $f_3(x)=3\cos(3x)\cdot e^{\sin(3x)}$.
+  \item Aproxima estas integrales con la función que hemos definido con diferentes valores de $N$ y evalúa el error respecto a la interal exacta que calculaste
+  \item Genera una tabla con los resultados
+\end{itemize}
 \end{frame}
 
 % ___________________________________________________________________________
@@ -158,26 +232,27 @@ m = minmax(lista);
 \hypertarget{funciones-an-nimas}{}
 \pdfbookmark[0]{Funciones anónimas.}{funciones-an-nimas}
 \begin{frame}[containsverbatim]
-\frametitle{Funciones anónimas.}
+\frametitle{Más sobre funciones anónimas}
 \small
 Definición
 \begin{itemize}
-\item En Matlab, se utilza un tipo especial de funciones,
-  (\emph{Function Handles}) para funciones sin necesidad de un archivo
+\item Matlab como casi todos los senguajes, define un tipo especial de funciones,
+  (\emph{funciones lambda}). 
+ Para ello, se utiliza el carácter \verb|@|
+\item Permite definr funciones breves sin necesidad de un archivo
   adicional\footnote{Matlab no permite la definición de funciones de
-    forma interactiva (salvo \texttt{inline}). Octave sí lo permite}
-\item Para ello, se utiliza un ``nombre especial'': \verb|@|
+    forma interactiva (salvo \texttt{inline}). Octave sí lo permite.}
+
 \end{itemize}
 \begin{Octave}
->> testth = @(x,y) exp(-(x.^2+y.^2)) 
->> testfh(1,i) 
+>> testf = @(x,y) exp(-(x.^2+y.^2)) 
+>> testf(1,i) 
 ans = 1
 \end{Octave}
 Utilidad: estas funciones  pueden pasarse como argumento para otra
 función
 \begin{Octave}
->> f = @(x) x^2;
->> integracion_numerica(f,0,1);
+>> integracion_numer(@(x) x^2, 0, 1);
 \end{Octave}
 \end{frame}
 
@@ -245,67 +320,71 @@ Permite expresiones mucho más compactas.
 \pdfbookmark[0]{La biblioteca de funciones}{la-biblioteca-de-funciones}
 \begin{frame}\frametitle{La biblioteca de funciones}
 \begin{itemize}
+  \setlength{\itemsep}{0.7em}
 \item {} 
-Integración numérica (quad, quadl, quad2dg...)
+  Integración numérica (\textbf{quad}, quadl, quad2dg...)
 
 \item {} 
-Interpolación (interp1, interp2, polyfit, fft,...)
+  Interpolación (\textbf{interp1}, interp2, polyfit, fft,...)
+
+\item {} 
+  Resolución numérica de ecuaciones diferenciales (\textbf{ode45},...)
 
 \item {} 
 Estadística descriptiva (mean, std, median,...)
 
 \end{itemize}
 
-\textbf{Ejercicio}: Localiza funciones de tu interés y pruébalas!
-\begin{itemize}\item 
-  Indicación:
-  \begin{itemize}
-  \item Echa un vistazo a la ayuda de Octave (HTML)
-  \item Utiliza la función \texttt{lookfor} (busca funciones relacionadas
-    con una palabra clave). Por ejemplo, \texttt{lookfor fourier}.
-  \end{itemize}
+% \textbf{Ejercicio}: Localiza funciones de tu interés y pruébalas!
+% \begin{itemize}\item 
+%   Indicación:
+%   \begin{itemize}
+%   \item Echa un vistazo a la ayuda de Octave (HTML)
+%   \item Utiliza la función \texttt{lookfor} (busca funciones relacionadas
+%     con una palabra clave). Por ejemplo, \texttt{lookfor fourier}.
+%   \end{itemize}
 
-\end{itemize}
+% \end{itemize}
 
 
 \end{frame}
 
 % ___________________________________________________________________________
 
-\hypertarget{toolkits-en-octave}{}
-\pdfbookmark[0]{``Toolkits'' en Octave}{toolkits-en-octave}
-\begin{frame}\frametitle{``Toolkits'' en Octave}
-\begin{itemize}
-\item {} 
-\texttt{Tookits} ``oficiales'': Octave forge \href{http://octave.sourceforge.net}{http://octave.sourceforge.net}
-\begin{itemize}
-\item Mirar en la web la lista de \texttt{toolkits}
-\end{itemize}
-\item {} 
-Muchos otros.
-\begin{quote}
-\begin{itemize}
-
-\item MPITB (\texttt{Toolkit} de Paralelización con MPI, desarrollado por
-  Javier F. Baldomero, Universidad de Granada)\footnote{\url{http://atc.ugr.es/javier-bin/mpitb}}
-
-\item {} 
-Octaviz (VTK en Octave)
-
-\item {} 
-Octplot, etc
-
-\end{itemize}
-\end{quote}
-
-\item Problema: no hay garantías de compatibilidad con \texttt{Toolkits} de Matlab
-  \begin{itemize}
-  \item Independencia respecto a Octave y sus líneas estratégicas
-  \end{itemize}
-\end{itemize}
-
-\end{frame}
-
+% \hypertarget{toolkits-en-octave}{}
+% \pdfbookmark[0]{``Toolkits'' en Octave}{toolkits-en-octave}
+% \begin{frame}\frametitle{``Toolkits'' en Octave}
+% \begin{itemize}
+% \item {} 
+% \texttt{Tookits} ``oficiales'': Octave forge \href{http://octave.sourceforge.net}{http://octave.sourceforge.net}
+% \begin{itemize}
+% \item Mirar en la web la lista de \texttt{toolkits}
+% \end{itemize}
+% \item {} 
+% Muchos otros.
+% \begin{quote}
+% \begin{itemize}
+%
+% \item MPITB (\texttt{Toolkit} de Paralelización con MPI, desarrollado por
+%   Javier F. Baldomero, Universidad de Granada)\footnote{\url{http://atc.ugr.es/javier-bin/mpitb}}
+%
+% \item {} 
+% Octaviz (VTK en Octave)
+%
+% \item {} 
+% Octplot, etc
+%
+% \end{itemize}
+% \end{quote}
+%
+% \item Problema: no hay garantías de compatibilidad con \texttt{Toolkits} de Matlab
+%   \begin{itemize}
+%   \item Independencia respecto a Octave y sus líneas estratégicas
+%   \end{itemize}
+% \end{itemize}
+%
+% \end{frame}
+%
 % % ___________________________________________________________________________
 
 % \hypertarget{ejercicios}{}
@@ -361,97 +440,97 @@ Octplot, etc
 
 % ___________________________________________________________________________
 
-\begin{frame}[containsverbatim]
-\frametitle{Extensiones dinámicas de Octave}
-\vspace{-0.5em}
-  Fichero \texttt{MiFuncion.cpp}:
-
-  \begin{C++}
-#include <oct.h> // Acceso al codigo de Octave!
-DEFUN_DLD(MiFuncion, args, nargout, "Descripcion")  
-{
-  // ... Codigo C++ ...
-  return octave_value()
-}
-  \end{C++}
-
-  Compilación (con \texttt{mkoctfile}, un envoltorio del compilador  C++)
-
-  \begin{sh}
-$ mkoctfile MiFuncion.cpp
-  \end{sh} %$
-  
-  Obtenemos el fichero \texttt{MiFuncion.oct}, que usaremos desde octave:
-  \begin{Octave}
->> MiFuncion
-  \end{Octave}
-\end{frame}
-
-
-\begin{frame}[containsverbatim]
-\frametitle{Extensiones dinámicas de Octave: Hola Mundo!}
-
-Fichero \texttt{holamundo.cpp}
-\begin{C++}
-#include <octave/oct.h>
-DEFUN_DLD(holamundo, args, nargs , ``Programa hola mundo'')
-{
-  std::cout << ``Hola Mundo!'' << std::endl;
-  return octave_value()
-}
-\end{C++} 
-
-Lo compilamos (\verb|$ mkoctfile holamundo.cpp|) y lo usamos desde Octave:
-  \begin{Octave}
->> holamundo
-``Hola Mundo!''
-  \end{Octave}
-\end{frame}
-
-\begin{frame}[containsverbatim]
-\frametitle{Extensiones dinámicas de Octave: $f(x)=x^2$ }
-\small
-Fichero \texttt{xcuadrado.cpp}:
-\begin{C++}
-#include <octave/oct.h>
-DEFUN_DLD(xcuadrado, args, , \
-  "Calcula el cuadrado de un real, x'')
-{
-  if(args.length() != 1) {
-    std::cerr << "ERROR: Se necesita tomar un valor" << std::endl;
-    return octave_value()
-  }
-  const double x = args(0).double_value();
-  octave_value y = x*x;
-  return y;
-}
-\end{C++}
-\end{frame}
-
-\begin{frame}[containsverbatim]
-  \frametitle{Creación de módulos dinámicos C/C++ con SWIG} 
-
-  \begin{itemize}
-  \item 
-  \textbf{¿Qué es SWIG?} 
-  Potente interfaz para generar envolturas (\textit{wrappers}) que
-  permiten acceder a funciones (o clases) C/C++ desde Octave, Python,
-  Java, Perl,...
-  \item \textbf{¿Cómo usar SWIG?}
-    \begin{enumerate}
-    \item Tenemos varias funciones (o clases) C/C++ en un fichero
-      ``\verb|ejemplo.cpp|''
-    \item Escribimos un fichero de directivas ``\verb|ejemplo.i|'', donde
-      indicamos a qué funciones C/C++ deseamos acceder
-    \item A partir de él, SWIG genera un fichero C/C++ ``\verb|ejemplo_wrap.cpp|''
-    \item Compilamos ``\verb|ejemplo_wrap.cpp|'' $+$
-      ``\verb|ejemplo.cpp|'' (mediante \verb|mkoctfile|), obteniendo
-      ``\verb|ejemplo.oct|''
-    \item Desde Octave, ya podemos utilizar el módulo o \emph{toolkit}
-      ``\verb|ejemplo|'' 
-    \end{enumerate}
-  \end{itemize}
-\end{frame}
+% \begin{frame}[containsverbatim]
+% \frametitle{Extensiones dinámicas de Octave}
+% \vspace{-0.5em}
+%   Fichero \texttt{MiFuncion.cpp}:
+%
+%   \begin{C++}
+% #include <oct.h> // Acceso al codigo de Octave!
+% DEFUN_DLD(MiFuncion, args, nargout, "Descripcion")  
+% {
+%   // ... Codigo C++ ...
+%   return octave_value()
+% }
+%   \end{C++}
+%
+%   Compilación (con \texttt{mkoctfile}, un envoltorio del compilador  C++)
+%
+%   \begin{sh}
+% $ mkoctfile MiFuncion.cpp
+%   \end{sh} %$
+%
+%   Obtenemos el fichero \texttt{MiFuncion.oct}, que usaremos desde octave:
+%   \begin{Octave}
+% >> MiFuncion
+%   \end{Octave}
+% \end{frame}
+%
+%
+% \begin{frame}[containsverbatim]
+% \frametitle{Extensiones dinámicas de Octave: Hola Mundo!}
+%
+% Fichero \texttt{holamundo.cpp}
+% \begin{C++}
+% #include <octave/oct.h>
+% DEFUN_DLD(holamundo, args, nargs , ``Programa hola mundo'')
+% {
+%   std::cout << ``Hola Mundo!'' << std::endl;
+%   return octave_value()
+% }
+% \end{C++} 
+%
+% Lo compilamos (\verb|$ mkoctfile holamundo.cpp|) y lo usamos desde Octave:
+%   \begin{Octave}
+% >> holamundo
+% ``Hola Mundo!''
+%   \end{Octave}
+% \end{frame}
+%
+% \begin{frame}[containsverbatim]
+% \frametitle{Extensiones dinámicas de Octave: $f(x)=x^2$ }
+% \small
+% Fichero \texttt{xcuadrado.cpp}:
+% \begin{C++}
+% #include <octave/oct.h>
+% DEFUN_DLD(xcuadrado, args, , \
+%   "Calcula el cuadrado de un real, x'')
+% {
+%   if(args.length() != 1) {
+%     std::cerr << "ERROR: Se necesita tomar un valor" << std::endl;
+%     return octave_value()
+%   }
+%   const double x = args(0).double_value();
+%   octave_value y = x*x;
+%   return y;
+% }
+% \end{C++}
+% \end{frame}
+%
+% \begin{frame}[containsverbatim]
+%   \frametitle{Creación de módulos dinámicos C/C++ con SWIG} 
+%
+%   \begin{itemize}
+%   \item 
+%   \textbf{¿Qué es SWIG?} 
+%   Potente interfaz para generar envolturas (\textit{wrappers}) que
+%   permiten acceder a funciones (o clases) C/C++ desde Octave, Python,
+%   Java, Perl,...
+%   \item \textbf{¿Cómo usar SWIG?}
+%     \begin{enumerate}
+%     \item Tenemos varias funciones (o clases) C/C++ en un fichero
+%       ``\verb|ejemplo.cpp|''
+%     \item Escribimos un fichero de directivas ``\verb|ejemplo.i|'', donde
+%       indicamos a qué funciones C/C++ deseamos acceder
+%     \item A partir de él, SWIG genera un fichero C/C++ ``\verb|ejemplo_wrap.cpp|''
+%     \item Compilamos ``\verb|ejemplo_wrap.cpp|'' $+$
+%       ``\verb|ejemplo.cpp|'' (mediante \verb|mkoctfile|), obteniendo
+%       ``\verb|ejemplo.oct|''
+%     \item Desde Octave, ya podemos utilizar el módulo o \emph{toolkit}
+%       ``\verb|ejemplo|'' 
+%     \end{enumerate}
+%   \end{itemize}
+% \end{frame}
 % ___________________________________________________________________________
 
 \begin{frame}\frametitle{Bibliografía}
